@@ -29,6 +29,11 @@ namespace InterfacePaddingGenerator
         public static string CurrentFile = null;
 
         /// <summary>
+        /// Handle to the main form
+        /// </summary>
+        public static Forms.FMain FormMain = null;
+
+        /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
@@ -36,7 +41,7 @@ namespace InterfacePaddingGenerator
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Forms.FMain());
+            Application.Run(FormMain = new Forms.FMain());
         }
     }
 }

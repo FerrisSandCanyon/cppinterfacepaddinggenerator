@@ -1,6 +1,7 @@
 ﻿//#define DISABLE_UPDATE_CHECK
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
@@ -20,6 +21,27 @@ namespace InterfacePaddingGenerator.Forms
         private void SetTitile()
         {
             this.Text = Program.DefaultTitle + " - " + Path.GetFileName(Program.CurrentFile ?? "Untitled");
+        }
+
+        /// <summary>
+        /// Loads an IPG instance to the UI
+        /// </summary>
+        /// <param name="instance">An instance of IPG</param>
+        public void LoadIPG(in Class.IPGInstance instance)
+        {
+            tbInterfaceName.Text = instance.InterfaceName;
+            tbPaddingCount.Text = instance.PaddingCount.ToString();
+            tbFunctionPrefix.Text = instance.PaddingFunctionPrefix;
+            cbNoPrefix.Checked = instance.NoPrefix;
+            cbNonDestructive.Checked = instance.NonDestructive;
+
+            lvFunctions.Items.Clear();
+            foreach (KeyValuePair<int, string> ifacefn in instance.DefinedFunctions)
+            {
+                instance.LVIInstance = new ListViewItem(ifacefn.Key.ToString());
+                instance.LVIInstance.SubItems.Add(ifacefn.Value);
+                lvFunctions.Items.Add(instance.LVIInstance);
+            }
         }
 
         private void FMain_Load(object sender, EventArgs e)

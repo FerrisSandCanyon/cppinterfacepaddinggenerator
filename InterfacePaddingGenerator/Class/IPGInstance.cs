@@ -20,7 +20,7 @@ namespace InterfacePaddingGenerator.Class
         /// <summary>
         /// Number of virtual function padding
         /// </summary>
-        public int PaddingSize = 0;
+        public int PaddingCount = 0;
 
         /// <summary>
         /// Prefix to the virtual funtion padding name
@@ -35,12 +35,12 @@ namespace InterfacePaddingGenerator.Class
         /// <summary>
         /// Non destructive write option
         /// </summary>
-        bool NonDestructive = true;
+        public bool NonDestructive = true;
 
         /// <summary>
         /// No "I" perfix on interface class name option
         /// </summary>
-        bool NoPrefix = false;
+        public bool NoPrefix = false;
 
         /// <summary>
         /// List of defined interface functions

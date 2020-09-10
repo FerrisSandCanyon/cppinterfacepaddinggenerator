@@ -37,28 +37,28 @@ namespace InterfacePaddingGenerator.Forms
             this.chFunction = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tsMain = new System.Windows.Forms.ToolStrip();
             this.tsddFile = new System.Windows.Forms.ToolStripDropDownButton();
-            this.openipgFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAsAnInterfacePaddingGeneratoripgFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.generateInterfaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.setOutputFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.miOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.miSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.miGenerate = new System.Windows.Forms.ToolStripMenuItem();
+            this.miSetOutput = new System.Windows.Forms.ToolStripMenuItem();
+            this.ddCustomInterface = new System.Windows.Forms.ToolStripDropDownButton();
+            this.miAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.miRemove = new System.Windows.Forms.ToolStripMenuItem();
+            this.miEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.lblVer = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAbout = new System.Windows.Forms.ToolStripButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.tbFunctionPrefix = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cbNonDestructive = new System.Windows.Forms.CheckBox();
             this.cbNoPrefix = new System.Windows.Forms.CheckBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbPaddingCount = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbInterfaceName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.tbOutFile = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tsMain.SuspendLayout();
@@ -99,8 +99,8 @@ namespace InterfacePaddingGenerator.Forms
             // 
             // chIndex
             // 
-            this.chIndex.Text = "vtable index";
-            this.chIndex.Width = 76;
+            this.chIndex.Text = "idx";
+            this.chIndex.Width = 29;
             // 
             // chFunction
             // 
@@ -111,7 +111,7 @@ namespace InterfacePaddingGenerator.Forms
             // 
             this.tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsddFile,
-            this.toolStripDropDownButton2,
+            this.ddCustomInterface,
             this.toolStripSeparator1,
             this.lblVer,
             this.toolStripSeparator2,
@@ -125,10 +125,10 @@ namespace InterfacePaddingGenerator.Forms
             // tsddFile
             // 
             this.tsddFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openipgFileToolStripMenuItem,
-            this.saveAsAnInterfacePaddingGeneratoripgFileToolStripMenuItem,
-            this.generateInterfaceToolStripMenuItem,
-            this.setOutputFileToolStripMenuItem});
+            this.miOpen,
+            this.miSave,
+            this.miGenerate,
+            this.miSetOutput});
             this.tsddFile.ForeColor = System.Drawing.Color.Black;
             this.tsddFile.Image = global::InterfacePaddingGenerator.Properties.Resources.mainicon;
             this.tsddFile.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -136,63 +136,63 @@ namespace InterfacePaddingGenerator.Forms
             this.tsddFile.Size = new System.Drawing.Size(54, 22);
             this.tsddFile.Text = "File";
             // 
-            // openipgFileToolStripMenuItem
+            // miOpen
             // 
-            this.openipgFileToolStripMenuItem.Name = "openipgFileToolStripMenuItem";
-            this.openipgFileToolStripMenuItem.Size = new System.Drawing.Size(336, 22);
-            this.openipgFileToolStripMenuItem.Text = "Open Interface Padding Generator (*.ipg) File";
+            this.miOpen.Name = "miOpen";
+            this.miOpen.Size = new System.Drawing.Size(336, 22);
+            this.miOpen.Text = "Open Interface Padding Generator (*.ipg) File";
             // 
-            // saveAsAnInterfacePaddingGeneratoripgFileToolStripMenuItem
+            // miSave
             // 
-            this.saveAsAnInterfacePaddingGeneratoripgFileToolStripMenuItem.Name = "saveAsAnInterfacePaddingGeneratoripgFileToolStripMenuItem";
-            this.saveAsAnInterfacePaddingGeneratoripgFileToolStripMenuItem.Size = new System.Drawing.Size(336, 22);
-            this.saveAsAnInterfacePaddingGeneratoripgFileToolStripMenuItem.Text = "Save as an Interface Padding Generator (*.ipg) File";
+            this.miSave.Name = "miSave";
+            this.miSave.Size = new System.Drawing.Size(336, 22);
+            this.miSave.Text = "Save as an Interface Padding Generator (*.ipg) File";
             // 
-            // generateInterfaceToolStripMenuItem
+            // miGenerate
             // 
-            this.generateInterfaceToolStripMenuItem.Name = "generateInterfaceToolStripMenuItem";
-            this.generateInterfaceToolStripMenuItem.Size = new System.Drawing.Size(336, 22);
-            this.generateInterfaceToolStripMenuItem.Text = "Generate Interface";
+            this.miGenerate.Name = "miGenerate";
+            this.miGenerate.Size = new System.Drawing.Size(336, 22);
+            this.miGenerate.Text = "Generate Interface";
             // 
-            // setOutputFileToolStripMenuItem
+            // miSetOutput
             // 
-            this.setOutputFileToolStripMenuItem.Name = "setOutputFileToolStripMenuItem";
-            this.setOutputFileToolStripMenuItem.Size = new System.Drawing.Size(336, 22);
-            this.setOutputFileToolStripMenuItem.Text = "Set output file";
+            this.miSetOutput.Name = "miSetOutput";
+            this.miSetOutput.Size = new System.Drawing.Size(336, 22);
+            this.miSetOutput.Text = "Set output file";
             // 
-            // toolStripDropDownButton2
+            // ddCustomInterface
             // 
-            this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1,
-            this.removeToolStripMenuItem,
-            this.editToolStripMenuItem});
-            this.toolStripDropDownButton2.ForeColor = System.Drawing.Color.Black;
-            this.toolStripDropDownButton2.Image = global::InterfacePaddingGenerator.Properties.Resources.edit;
-            this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
-            this.toolStripDropDownButton2.Size = new System.Drawing.Size(127, 22);
-            this.toolStripDropDownButton2.Text = "Custom Interface";
+            this.ddCustomInterface.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miAdd,
+            this.miRemove,
+            this.miEdit});
+            this.ddCustomInterface.ForeColor = System.Drawing.Color.Black;
+            this.ddCustomInterface.Image = global::InterfacePaddingGenerator.Properties.Resources.edit;
+            this.ddCustomInterface.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ddCustomInterface.Name = "ddCustomInterface";
+            this.ddCustomInterface.Size = new System.Drawing.Size(127, 22);
+            this.ddCustomInterface.Text = "Custom Interface";
             // 
-            // toolStripMenuItem1
+            // miAdd
             // 
-            this.toolStripMenuItem1.Image = global::InterfacePaddingGenerator.Properties.Resources.plus;
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem1.Text = "Add";
+            this.miAdd.Image = global::InterfacePaddingGenerator.Properties.Resources.plus;
+            this.miAdd.Name = "miAdd";
+            this.miAdd.Size = new System.Drawing.Size(180, 22);
+            this.miAdd.Text = "Add";
             // 
-            // removeToolStripMenuItem
+            // miRemove
             // 
-            this.removeToolStripMenuItem.Image = global::InterfacePaddingGenerator.Properties.Resources.error;
-            this.removeToolStripMenuItem.Name = "removeToolStripMenuItem";
-            this.removeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.removeToolStripMenuItem.Text = "Remove";
+            this.miRemove.Image = global::InterfacePaddingGenerator.Properties.Resources.error;
+            this.miRemove.Name = "miRemove";
+            this.miRemove.Size = new System.Drawing.Size(180, 22);
+            this.miRemove.Text = "Remove";
             // 
-            // editToolStripMenuItem
+            // miEdit
             // 
-            this.editToolStripMenuItem.Image = global::InterfacePaddingGenerator.Properties.Resources.edit;
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.editToolStripMenuItem.Text = "Edit";
+            this.miEdit.Image = global::InterfacePaddingGenerator.Properties.Resources.edit;
+            this.miEdit.Name = "miEdit";
+            this.miEdit.Size = new System.Drawing.Size(180, 22);
+            this.miEdit.Text = "Edit";
             // 
             // toolStripSeparator1
             // 
@@ -228,13 +228,13 @@ namespace InterfacePaddingGenerator.Forms
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.textBox4);
+            this.groupBox2.Controls.Add(this.tbFunctionPrefix);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.cbNonDestructive);
             this.groupBox2.Controls.Add(this.cbNoPrefix);
-            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.tbPaddingCount);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.tbInterfaceName);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(12, 28);
@@ -244,15 +244,15 @@ namespace InterfacePaddingGenerator.Forms
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Interface";
             // 
-            // textBox4
+            // tbFunctionPrefix
             // 
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.ForeColor = System.Drawing.Color.White;
-            this.textBox4.Location = new System.Drawing.Point(434, 21);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(153, 22);
-            this.textBox4.TabIndex = 7;
+            this.tbFunctionPrefix.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.tbFunctionPrefix.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbFunctionPrefix.ForeColor = System.Drawing.Color.White;
+            this.tbFunctionPrefix.Location = new System.Drawing.Point(434, 21);
+            this.tbFunctionPrefix.Name = "tbFunctionPrefix";
+            this.tbFunctionPrefix.Size = new System.Drawing.Size(153, 22);
+            this.tbFunctionPrefix.TabIndex = 7;
             // 
             // label4
             // 
@@ -285,16 +285,16 @@ namespace InterfacePaddingGenerator.Forms
             this.cbNoPrefix.Text = "Dont prefix with \"I\"";
             this.cbNoPrefix.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // tbPaddingCount
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.ForeColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(134, 50);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(153, 22);
-            this.textBox2.TabIndex = 5;
-            this.textBox2.Text = "0";
+            this.tbPaddingCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.tbPaddingCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbPaddingCount.ForeColor = System.Drawing.Color.White;
+            this.tbPaddingCount.Location = new System.Drawing.Point(134, 50);
+            this.tbPaddingCount.Name = "tbPaddingCount";
+            this.tbPaddingCount.Size = new System.Drawing.Size(153, 22);
+            this.tbPaddingCount.TabIndex = 5;
+            this.tbPaddingCount.Text = "0";
             // 
             // label2
             // 
@@ -305,15 +305,15 @@ namespace InterfacePaddingGenerator.Forms
             this.label2.TabIndex = 4;
             this.label2.Text = "Number of functions:";
             // 
-            // textBox1
+            // tbInterfaceName
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(134, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(153, 22);
-            this.textBox1.TabIndex = 1;
+            this.tbInterfaceName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.tbInterfaceName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbInterfaceName.ForeColor = System.Drawing.Color.White;
+            this.tbInterfaceName.Location = new System.Drawing.Point(134, 21);
+            this.tbInterfaceName.Name = "tbInterfaceName";
+            this.tbInterfaceName.Size = new System.Drawing.Size(153, 22);
+            this.tbInterfaceName.TabIndex = 1;
             // 
             // label1
             // 
@@ -324,18 +324,18 @@ namespace InterfacePaddingGenerator.Forms
             this.label1.TabIndex = 0;
             this.label1.Text = "Interface name:";
             // 
-            // textBox3
+            // tbOutFile
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbOutFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.ForeColor = System.Drawing.Color.White;
-            this.textBox3.Location = new System.Drawing.Point(81, 364);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(746, 22);
-            this.textBox3.TabIndex = 4;
+            this.tbOutFile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.tbOutFile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbOutFile.ForeColor = System.Drawing.Color.White;
+            this.tbOutFile.Location = new System.Drawing.Point(81, 364);
+            this.tbOutFile.Name = "tbOutFile";
+            this.tbOutFile.ReadOnly = true;
+            this.tbOutFile.Size = new System.Drawing.Size(746, 22);
+            this.tbOutFile.TabIndex = 4;
             // 
             // label3
             // 
@@ -353,7 +353,7 @@ namespace InterfacePaddingGenerator.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.ClientSize = new System.Drawing.Size(839, 396);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.tbOutFile);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.tsMain);
@@ -383,28 +383,28 @@ namespace InterfacePaddingGenerator.Forms
         private System.Windows.Forms.ColumnHeader chFunction;
         private System.Windows.Forms.ToolStrip tsMain;
         private System.Windows.Forms.ToolStripDropDownButton tsddFile;
-        private System.Windows.Forms.ToolStripMenuItem openipgFileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton2;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem removeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem miOpen;
+        private System.Windows.Forms.ToolStripDropDownButton ddCustomInterface;
+        private System.Windows.Forms.ToolStripMenuItem miAdd;
+        private System.Windows.Forms.ToolStripMenuItem miRemove;
+        private System.Windows.Forms.ToolStripMenuItem miEdit;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbInterfaceName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox cbNoPrefix;
-        private System.Windows.Forms.ToolStripMenuItem generateInterfaceToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ToolStripMenuItem miGenerate;
+        private System.Windows.Forms.TextBox tbPaddingCount;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox cbNonDestructive;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox tbOutFile;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ToolStripMenuItem setOutputFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem miSetOutput;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripLabel lblVer;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btnAbout;
-        private System.Windows.Forms.ToolStripMenuItem saveAsAnInterfacePaddingGeneratoripgFileToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.ToolStripMenuItem miSave;
+        private System.Windows.Forms.TextBox tbFunctionPrefix;
         private System.Windows.Forms.Label label4;
     }
 }
