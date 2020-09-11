@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace InterfacePaddingGenerator.Forms
+namespace IPG.Forms
 {
     partial class FMain
     {
@@ -130,7 +130,7 @@ namespace InterfacePaddingGenerator.Forms
             this.miGenerate,
             this.miSetOutput});
             this.tsddFile.ForeColor = System.Drawing.Color.Black;
-            this.tsddFile.Image = global::InterfacePaddingGenerator.Properties.Resources.mainicon;
+            this.tsddFile.Image = global::IPG.Properties.Resources.mainicon;
             this.tsddFile.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsddFile.Name = "tsddFile";
             this.tsddFile.Size = new System.Drawing.Size(54, 22);
@@ -167,7 +167,7 @@ namespace InterfacePaddingGenerator.Forms
             this.miRemove,
             this.miEdit});
             this.ddCustomInterface.ForeColor = System.Drawing.Color.Black;
-            this.ddCustomInterface.Image = global::InterfacePaddingGenerator.Properties.Resources.edit;
+            this.ddCustomInterface.Image = global::IPG.Properties.Resources.edit;
             this.ddCustomInterface.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.ddCustomInterface.Name = "ddCustomInterface";
             this.ddCustomInterface.Size = new System.Drawing.Size(127, 22);
@@ -175,21 +175,21 @@ namespace InterfacePaddingGenerator.Forms
             // 
             // miAdd
             // 
-            this.miAdd.Image = global::InterfacePaddingGenerator.Properties.Resources.plus;
+            this.miAdd.Image = global::IPG.Properties.Resources.plus;
             this.miAdd.Name = "miAdd";
             this.miAdd.Size = new System.Drawing.Size(180, 22);
             this.miAdd.Text = "Add";
             // 
             // miRemove
             // 
-            this.miRemove.Image = global::InterfacePaddingGenerator.Properties.Resources.error;
+            this.miRemove.Image = global::IPG.Properties.Resources.error;
             this.miRemove.Name = "miRemove";
             this.miRemove.Size = new System.Drawing.Size(180, 22);
             this.miRemove.Text = "Remove";
             // 
             // miEdit
             // 
-            this.miEdit.Image = global::InterfacePaddingGenerator.Properties.Resources.edit;
+            this.miEdit.Image = global::IPG.Properties.Resources.edit;
             this.miEdit.Name = "miEdit";
             this.miEdit.Size = new System.Drawing.Size(180, 22);
             this.miEdit.Text = "Edit";
@@ -217,7 +217,7 @@ namespace InterfacePaddingGenerator.Forms
             // btnAbout
             // 
             this.btnAbout.ForeColor = System.Drawing.Color.Black;
-            this.btnAbout.Image = global::InterfacePaddingGenerator.Properties.Resources.info;
+            this.btnAbout.Image = global::IPG.Properties.Resources.info;
             this.btnAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAbout.Name = "btnAbout";
             this.btnAbout.Size = new System.Drawing.Size(60, 22);

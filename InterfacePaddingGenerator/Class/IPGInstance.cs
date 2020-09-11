@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace InterfacePaddingGenerator.Class
+namespace IPG.Class
 {
     public class IPGInstance
     {

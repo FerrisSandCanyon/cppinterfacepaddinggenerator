@@ -6,7 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 
-namespace InterfacePaddingGenerator.Forms
+namespace IPG.Forms
 {
     public partial class FMain : Form
     {

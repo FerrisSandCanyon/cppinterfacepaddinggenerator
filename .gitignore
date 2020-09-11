@@ -2,3 +2,4 @@
 packages/
 InterfacePaddingGenerator/bin
 InterfacePaddingGenerator/obj
+build/

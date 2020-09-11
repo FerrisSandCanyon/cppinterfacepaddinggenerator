@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using IPG.Extensions;
 
-namespace InterfacePaddingGenerator
+namespace IPG
 {
     public static class Program
     {
@@ -37,11 +37,18 @@ namespace InterfacePaddingGenerator
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(FormMain = new Forms.FMain());
+
+            // TODO: parse arg if an IPG file was passed
+            // Load IPG File after form creation to obtain direct access to FMain's controls
+            if (args.Count() > 0 && !args[0].IsNullOrWhitespace() && Path.GetExtension(args[0]) == "ipg")
+            {
+                // Load IPG File
+            }
         }
     }
 }
