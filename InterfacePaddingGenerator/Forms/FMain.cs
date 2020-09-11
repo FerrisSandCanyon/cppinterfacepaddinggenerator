@@ -5,14 +5,20 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
+using IPG.Extensions;
 
 namespace IPG.Forms
 {
     public partial class FMain : Form
     {
-        public FMain()
+        public FMain(string LoadIPGPath)
         {
             InitializeComponent();
+            // Load IPG File after form creation to obtain direct access to FMain's controls
+            if (!LoadIPGPath.IsNullOrWhitespace() && Path.GetExtension(LoadIPGPath) == "ipg")
+            {
+                // Load IPG File
+            }
         }
 
         /// <summary>

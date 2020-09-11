@@ -99,7 +99,7 @@ namespace IPG.Forms
             // 
             // chIndex
             // 
-            this.chIndex.Text = "idx";
+            this.chIndex.Text = "IDX";
             this.chIndex.Width = 29;
             // 
             // chFunction
@@ -177,21 +177,21 @@ namespace IPG.Forms
             // 
             this.miAdd.Image = global::IPG.Properties.Resources.plus;
             this.miAdd.Name = "miAdd";
-            this.miAdd.Size = new System.Drawing.Size(180, 22);
+            this.miAdd.Size = new System.Drawing.Size(117, 22);
             this.miAdd.Text = "Add";
             // 
             // miRemove
             // 
             this.miRemove.Image = global::IPG.Properties.Resources.error;
             this.miRemove.Name = "miRemove";
-            this.miRemove.Size = new System.Drawing.Size(180, 22);
+            this.miRemove.Size = new System.Drawing.Size(117, 22);
             this.miRemove.Text = "Remove";
             // 
             // miEdit
             // 
             this.miEdit.Image = global::IPG.Properties.Resources.edit;
             this.miEdit.Name = "miEdit";
-            this.miEdit.Size = new System.Drawing.Size(180, 22);
+            this.miEdit.Size = new System.Drawing.Size(117, 22);
             this.miEdit.Text = "Edit";
             // 
             // toolStripSeparator1

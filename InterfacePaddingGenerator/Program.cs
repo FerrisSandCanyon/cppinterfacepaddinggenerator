@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using IPG.Extensions;
 
 namespace IPG
 {
@@ -34,6 +33,11 @@ namespace IPG
         public static Forms.FMain FormMain = null;
 
         /// <summary>
+        /// Current IPG Instance loaded
+        /// </summary>
+        public static Class.IPGInstance CurrentInstance = null;
+
+        /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
@@ -41,14 +45,7 @@ namespace IPG
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(FormMain = new Forms.FMain());
-
-            // TODO: parse arg if an IPG file was passed
-            // Load IPG File after form creation to obtain direct access to FMain's controls
-            if (args.Count() > 0 && !args[0].IsNullOrWhitespace() && Path.GetExtension(args[0]) == "ipg")
-            {
-                // Load IPG File
-            }
+            Application.Run(FormMain = new Forms.FMain(args.Count() > 0 ? args[0] : null));
         }
     }
 }
