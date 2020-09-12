@@ -35,10 +35,10 @@ namespace IPG.Forms
         /// <param name="instance">An instance of IPG</param>
         public void LoadIPG(in Class.IPGInstance instance)
         {
-            tbInterfaceName.Text = instance.InterfaceName;
-            tbPaddingCount.Text = instance.PaddingCount.ToString();
-            tbFunctionPrefix.Text = instance.PaddingFunctionPrefix;
-            cbNoPrefix.Checked = instance.NoPrefix;
+            tbInterfaceName.Text     = instance.InterfaceName;
+            tbPaddingCount.Text      = instance.PaddingCount.ToString();
+            tbFunctionPrefix.Text    = instance.PaddingFunctionPrefix;
+            cbNoPrefix.Checked       = instance.NoPrefix;
             cbNonDestructive.Checked = instance.NonDestructive;
 
             lvFunctions.Items.Clear();
@@ -49,6 +49,7 @@ namespace IPG.Forms
                 lvFunctions.Items.Add(instance.LVIInstance);
             }
         }
+
 
         private void FMain_Load(object sender, EventArgs e)
         {
@@ -82,6 +83,28 @@ namespace IPG.Forms
             #else
             MessageBox.Show("Update checks has been removed from this build.", Program.DefaultTitle);
             #endif
+        }
+
+        private void miAdd_Click(object sender, EventArgs e)
+        {
+            new FunctionWindow().ShowDialog();
+        }
+
+        private void miEdit_Click(object sender, EventArgs e)
+        {
+            if (lvFunctions.SelectedItems.Count != 1)
+            {
+                MessageBox.Show("Please select a single item to edit.", "Edit interface function", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int _idx = -1;
+            if (!int.TryParse(lvFunctions.SelectedItems[0].SubItems[0].Text, out _idx))
+            {
+                MessageBox.Show("Invalid index.", "Edit interface function", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            new FunctionWindow(_idx).ShowDialog();
         }
     }
 }

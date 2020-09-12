@@ -177,22 +177,24 @@ namespace IPG.Forms
             // 
             this.miAdd.Image = global::IPG.Properties.Resources.plus;
             this.miAdd.Name = "miAdd";
-            this.miAdd.Size = new System.Drawing.Size(117, 22);
+            this.miAdd.Size = new System.Drawing.Size(180, 22);
             this.miAdd.Text = "Add";
+            this.miAdd.Click += new System.EventHandler(this.miAdd_Click);
             // 
             // miRemove
             // 
             this.miRemove.Image = global::IPG.Properties.Resources.error;
             this.miRemove.Name = "miRemove";
-            this.miRemove.Size = new System.Drawing.Size(117, 22);
+            this.miRemove.Size = new System.Drawing.Size(180, 22);
             this.miRemove.Text = "Remove";
             // 
             // miEdit
             // 
             this.miEdit.Image = global::IPG.Properties.Resources.edit;
             this.miEdit.Name = "miEdit";
-            this.miEdit.Size = new System.Drawing.Size(117, 22);
+            this.miEdit.Size = new System.Drawing.Size(180, 22);
             this.miEdit.Text = "Edit";
+            this.miEdit.Click += new System.EventHandler(this.miEdit_Click);
             // 
             // toolStripSeparator1
             // 

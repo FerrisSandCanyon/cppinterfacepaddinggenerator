@@ -59,9 +59,9 @@ namespace IPG.Forms
 
         private void FunctionWindow_Load(object sender, EventArgs e)
         {
-            if (Mode == FWMode.EDIT && Program.CurrentInstance == null || !Program.CurrentInstance.DefinedFunctions.ContainsKey(IndexToEdit))
+            if (Mode == FWMode.EDIT && (Program.CurrentInstance == null || !Program.CurrentInstance.DefinedFunctions.ContainsKey(IndexToEdit)))
             {
-                MessageBox.Show("A non existant key index was passed to FunctionWindow's constuctor. Please report this issue in the Github's repository with details to what might cause this.\n\nKey index: " + IndexToEdit, "Invalid key index", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("A non existant key index was passed to FunctionWindow's constuctor. Please report this issue in the Github's repository with details to what might have caused this.\n\nKey index: " + IndexToEdit, "Invalid key index", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
             }
