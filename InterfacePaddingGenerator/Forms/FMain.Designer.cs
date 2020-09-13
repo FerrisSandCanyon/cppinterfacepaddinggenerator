@@ -177,7 +177,7 @@ namespace IPG.Forms
             // 
             this.miAdd.Image = global::IPG.Properties.Resources.plus;
             this.miAdd.Name = "miAdd";
-            this.miAdd.Size = new System.Drawing.Size(180, 22);
+            this.miAdd.Size = new System.Drawing.Size(117, 22);
             this.miAdd.Text = "Add";
             this.miAdd.Click += new System.EventHandler(this.miAdd_Click);
             // 
@@ -185,14 +185,15 @@ namespace IPG.Forms
             // 
             this.miRemove.Image = global::IPG.Properties.Resources.error;
             this.miRemove.Name = "miRemove";
-            this.miRemove.Size = new System.Drawing.Size(180, 22);
+            this.miRemove.Size = new System.Drawing.Size(117, 22);
             this.miRemove.Text = "Remove";
+            this.miRemove.Click += new System.EventHandler(this.miRemove_Click);
             // 
             // miEdit
             // 
             this.miEdit.Image = global::IPG.Properties.Resources.edit;
             this.miEdit.Name = "miEdit";
-            this.miEdit.Size = new System.Drawing.Size(180, 22);
+            this.miEdit.Size = new System.Drawing.Size(117, 22);
             this.miEdit.Text = "Edit";
             this.miEdit.Click += new System.EventHandler(this.miEdit_Click);
             // 
@@ -380,7 +381,6 @@ namespace IPG.Forms
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ListView lvFunctions;
         private System.Windows.Forms.ColumnHeader chIndex;
         private System.Windows.Forms.ColumnHeader chFunction;
         private System.Windows.Forms.ToolStrip tsMain;
@@ -408,6 +408,7 @@ namespace IPG.Forms
         private System.Windows.Forms.ToolStripMenuItem miSave;
         private System.Windows.Forms.TextBox tbFunctionPrefix;
         private System.Windows.Forms.Label label4;
+        private ListView lvFunctions;
     }
 }
 

@@ -35,7 +35,7 @@ namespace IPG
         /// <summary>
         /// Current IPG Instance loaded
         /// </summary>
-        public static Class.IPGInstance CurrentInstance = null;
+        public static Class.IPGInstance CurrentInstance = new Class.IPGInstance();
 
         /// <summary>
         /// The main entry point for the application.

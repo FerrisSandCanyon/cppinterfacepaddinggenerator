@@ -34,6 +34,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbIndex = new System.Windows.Forms.TextBox();
             this.btnConfirm = new System.Windows.Forms.Button();
+            this.cbAddAnother = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // tbFunctionSignature
@@ -83,6 +84,17 @@
             this.btnConfirm.TabIndex = 6;
             this.btnConfirm.Text = "Confirm";
             this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
+            // cbAddAnother
+            // 
+            this.cbAddAnother.AutoSize = true;
+            this.cbAddAnother.Location = new System.Drawing.Point(213, 72);
+            this.cbAddAnother.Name = "cbAddAnother";
+            this.cbAddAnother.Size = new System.Drawing.Size(91, 17);
+            this.cbAddAnother.TabIndex = 7;
+            this.cbAddAnother.Text = "Add another";
+            this.cbAddAnother.UseVisualStyleBackColor = true;
             // 
             // FunctionWindow
             // 
@@ -90,6 +102,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.ClientSize = new System.Drawing.Size(400, 103);
+            this.Controls.Add(this.cbAddAnother);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.tbIndex);
             this.Controls.Add(this.label2);
@@ -116,5 +129,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbIndex;
         private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.CheckBox cbAddAnother;
     }
 }

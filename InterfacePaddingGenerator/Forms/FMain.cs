@@ -42,14 +42,21 @@ namespace IPG.Forms
             cbNonDestructive.Checked = instance.NonDestructive;
 
             lvFunctions.Items.Clear();
-            foreach (KeyValuePair<int, string> ifacefn in instance.DefinedFunctions)
+            foreach (Class.InterfaceFunction ifacefn in instance.DefinedFunctions)
             {
-                instance.LVIInstance = new ListViewItem(ifacefn.Key.ToString());
-                instance.LVIInstance.SubItems.Add(ifacefn.Value);
-                lvFunctions.Items.Add(instance.LVIInstance);
+                ifacefn.LVIInstance = new ListViewItem(ifacefn.Index.ToString());
+                ifacefn.LVIInstance.SubItems.Add(ifacefn.FunctionSignature);
+                lvFunctions.Items.Add(ifacefn.LVIInstance);
             }
         }
 
+        /// <summary>
+        /// Helper function to add an InterfaceFunction to the table
+        /// </summary>
+        public void TableAdd(Class.InterfaceFunction _if)
+        {
+            lvFunctions.Items.Add(_if.LVIInstance);
+        }
 
         private void FMain_Load(object sender, EventArgs e)
         {
@@ -105,6 +112,11 @@ namespace IPG.Forms
                 return;
             }
             new FunctionWindow(_idx).ShowDialog();
+        }
+
+        private void miRemove_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

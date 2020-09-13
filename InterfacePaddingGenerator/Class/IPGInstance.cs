@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace IPG.Class
@@ -47,12 +48,6 @@ namespace IPG.Class
         /// int    = vtable index
         /// string = interface function
         /// </summary>
-        public Dictionary<int, string> DefinedFunctions = new Dictionary<int, string> { };
-
-        [JsonIgnore]
-        /// <summary>
-        /// 
-        /// </summary>
-        public ListViewItem LVIInstance = null;
+        public List<Class.InterfaceFunction> DefinedFunctions = new List<Class.InterfaceFunction> { };
     }
 }
