@@ -29,6 +29,11 @@ namespace IPG.Forms
         private int IndexToEdit = -1;
 
         /// <summary>
+        /// Reference to the currently selected function
+        /// </summary>
+        Class.InterfaceFunction SelectedFunction = null;
+
+        /// <summary>
         /// Constructor for Adding a new interface function
         /// </summary>
         public FunctionWindow()
@@ -53,18 +58,21 @@ namespace IPG.Forms
             IndexToEdit = idx;
             Mode = FWMode.EDIT;
             cbAddAnother.Enabled = false;
-            Class.InterfaceFunction _selectedFunction = Program.CurrentInstance.DefinedFunctions.ElementAt(idx);
-            tbIndex.Text = _selectedFunction.Index.ToString();
-            tbFunctionSignature.Text = _selectedFunction.FunctionSignature;
         }
 
         private void FunctionWindow_Load(object sender, EventArgs e)
         {
-            if (Program.CurrentInstance == null || (Mode == FWMode.EDIT && !Program.CurrentInstance.DefinedFunctions.ContainsIndex(IndexToEdit)) )
+            if (Program.CurrentInstance == null || (Mode == FWMode.EDIT && ((SelectedFunction = Program.CurrentInstance.DefinedFunctions.FirstOrDefault(x => x.Index == IndexToEdit)) == null) ) )
             {
                 MessageBox.Show("A non existant key index was passed to FunctionWindow's constuctor. Please report this issue in the Github's repository with details to what might have caused this.\n\nKey index: " + IndexToEdit, "Invalid key index", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
                 return;
+            }
+
+            if (Mode == FWMode.EDIT)
+            {
+                tbIndex.Text = SelectedFunction.Index.ToString();
+                tbFunctionSignature.Text = SelectedFunction.FunctionSignature;
             }
         }
 
@@ -81,7 +89,7 @@ namespace IPG.Forms
             }
 
             // Parse the index
-            if (!int.TryParse(tbIndex.Text, out _idx))
+            if (!int.TryParse(tbIndex.Text, out _idx) || _idx < 0)
             {
                 MessageBox.Show("Invalid index!");
                 return;
@@ -108,6 +116,18 @@ namespace IPG.Forms
 
                 case FWMode.EDIT:
                 {
+                    if (SelectedFunction.Index != _idx && Program.CurrentInstance.DefinedFunctions.ContainsIndex(_idx))
+                    {
+                        MessageBox.Show("This index already exists!");
+                        return;
+                    }
+
+                    SelectedFunction.Index = _idx;
+                    SelectedFunction.FunctionSignature = tbFunctionSignature.Text;
+
+                    SelectedFunction.LVIInstance.SubItems[0].Text = tbIndex.Text;
+                    SelectedFunction.LVIInstance.SubItems[1].Text = tbFunctionSignature.Text;
+
                     break;
                 }
             }
