@@ -23,7 +23,7 @@ namespace IPG.Forms
         /// <summary>
         /// Automatically set the title appending the currently opened ipg file
         /// </summary>
-        public void SetTitile()
+        public void SetTitle()
         {
             this.Text = Program.DefaultTitle + " - " + Path.GetFileName(Program.CurrentFile ?? "Untitled");
         }
@@ -64,7 +64,7 @@ namespace IPG.Forms
             #endif
 
             lblVer.Text = "Version: " + Program.VersionString; // Set version
-            SetTitile();
+            SetTitle();
         }
 
         private void btnAbout_Click(object sender, EventArgs e)
@@ -115,7 +115,19 @@ namespace IPG.Forms
 
         private void miRemove_Click(object sender, EventArgs e)
         {
+            ListView.SelectedListViewItemCollection sel = lvFunctions.SelectedItems;
 
+            if (sel.Count < 1)
+            {
+                MessageBox.Show("Select atleast 1 item to remove!", "Remove item", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            foreach (ListViewItem lvi in sel)
+            {
+                Program.CurrentInstance.DefinedFunctions.RemoveAll(x => x.Index.ToString() == lvi.SubItems[0].Text);
+                lvi.Remove();
+            }
         }
     }
 }
