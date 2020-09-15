@@ -130,5 +130,32 @@ namespace IPG.Utils
 
             return instance;
         }
+
+        /// <summary>
+        /// Wrapper function for LoadFromFile that automatically sets up the UI and associated values
+        /// </summary>
+        /// <param name="filepath"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// Wrapper function exists so LoadFromFile can be independent and load IPG files without loading it as the current instance and to ease loading of files
+        /// </remarks>
+        public static bool LoadFromFileAndSetup(string filepath)
+        {
+            // Load the IPG file
+            Class.IPGInstance instance = LoadFromFile(filepath);
+
+            if (instance == null)
+                return false;
+
+            // Load the values
+            Program.CurrentInstance = instance;
+            Program.CurrentFile = filepath;
+
+            // Update the UI
+            Program.FormMain.LoadIPG(instance);
+            Program.FormMain.SetTitle();
+
+            return true;
+        }
     }
 }

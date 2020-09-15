@@ -23,7 +23,7 @@ namespace IPG.Forms
         /// <summary>
         /// Automatically set the title appending the currently opened ipg file
         /// </summary>
-        private void SetTitile()
+        public void SetTitile()
         {
             this.Text = Program.DefaultTitle + " - " + Path.GetFileName(Program.CurrentFile ?? "Untitled");
         }
