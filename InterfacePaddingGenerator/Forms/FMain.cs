@@ -1,7 +1,6 @@
 ﻿//#define DISABLE_UPDATE_CHECK
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;

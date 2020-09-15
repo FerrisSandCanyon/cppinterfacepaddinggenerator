@@ -84,14 +84,14 @@ namespace IPG.Forms
             // Check for blank input
             if (tbIndex.Text.IsNullOrWhitespace() || tbFunctionSignature.Text.IsNullOrWhitespace())
             {
-                MessageBox.Show("Input field is empty!");
+                MessageBox.Show("Input field is empty!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             // Parse the index
             if (!int.TryParse(tbIndex.Text, out _idx) || _idx < 0)
             {
-                MessageBox.Show("Invalid index!");
+                MessageBox.Show("Invalid index!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -101,7 +101,7 @@ namespace IPG.Forms
                 {
                     if (Program.CurrentInstance.DefinedFunctions.ContainsIndex(_idx))
                     {
-                        MessageBox.Show("This index already exists!");
+                        MessageBox.Show("This index already exists!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
@@ -118,15 +118,13 @@ namespace IPG.Forms
                 {
                     if (SelectedFunction.Index != _idx && Program.CurrentInstance.DefinedFunctions.ContainsIndex(_idx))
                     {
-                        MessageBox.Show("This index already exists!");
+                        MessageBox.Show("This index already exists!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-
-                    SelectedFunction.Index = _idx;
-                    SelectedFunction.FunctionSignature = tbFunctionSignature.Text;
-
+                    
+                    SelectedFunction.Index                        = _idx;
                     SelectedFunction.LVIInstance.SubItems[0].Text = tbIndex.Text;
-                    SelectedFunction.LVIInstance.SubItems[1].Text = tbFunctionSignature.Text;
+                    SelectedFunction.LVIInstance.SubItems[1].Text = SelectedFunction.FunctionSignature = tbFunctionSignature.Text;
 
                     break;
                 }
