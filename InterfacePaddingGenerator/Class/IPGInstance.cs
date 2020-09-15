@@ -83,6 +83,9 @@ namespace IPG.Utils
                 return false;
             }
 
+            // Update the last modified value
+            instance.DateLastModified = DateTime.Now;
+
             // Serialize the IPGInstance
             string serialized = JsonConvert.SerializeObject(instance);
             if (serialized == null)
@@ -152,7 +155,7 @@ namespace IPG.Utils
             Program.CurrentFile = filepath;
 
             // Update the UI
-            Program.FormMain.LoadIPG(instance);
+            Program.FormMain.LoadIPGToUI(instance);
             Program.FormMain.SetTitle();
 
             return true;

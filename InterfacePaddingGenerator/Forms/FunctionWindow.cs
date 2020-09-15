@@ -95,6 +95,8 @@ namespace IPG.Forms
                 return;
             }
 
+            // TODO: sanity check for function name
+
             switch (Mode)
             {
                 case FWMode.ADD:

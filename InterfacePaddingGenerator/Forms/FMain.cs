@@ -32,7 +32,7 @@ namespace IPG.Forms
         /// Loads an IPG instance to the UI
         /// </summary>
         /// <param name="instance">An instance of IPG</param>
-        public void LoadIPG(in Class.IPGInstance instance)
+        public void LoadIPGToUI(in Class.IPGInstance instance)
         {
             tbInterfaceName.Text     = instance.InterfaceName;
             tbPaddingCount.Text      = instance.PaddingCount.ToString();
@@ -47,6 +47,31 @@ namespace IPG.Forms
                 ifacefn.LVIInstance.SubItems.Add(ifacefn.FunctionSignature);
                 lvFunctions.Items.Add(ifacefn.LVIInstance);
             }
+        }
+
+        /// <summary>
+        /// Loads the UI values to the IPG Instance
+        /// </summary>
+        /// <returns>[bool] Returns true if successful, false otherwise</returns>
+        public bool LoadUIToIPG()
+        {
+            // TODO: sanity check for class name
+            int _idx_count = -1;
+            if (tbInterfaceName.Text.IsNullOrWhitespace() || tbPaddingCount.Text.IsNullOrWhitespace() || tbFunctionPrefix.Text.IsNullOrWhitespace() // Check for null strings or whitespace
+            || !int.TryParse(tbPaddingCount.Text, out _idx_count) // Parse the index count
+            || Program.CurrentInstance.DefinedFunctions.HighestIndex() > _idx_count // Check for invalid padding count
+            ) {
+                MessageBox.Show("Invalid values!", "IPG", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            Program.CurrentInstance.InterfaceName         = tbInterfaceName.Text;
+            Program.CurrentInstance.PaddingFunctionPrefix = tbFunctionPrefix.Text;
+            Program.CurrentInstance.PaddingCount          = _idx_count;
+            Program.CurrentInstance.NoPrefix              = cbNoPrefix.Checked;
+            Program.CurrentInstance.NonDestructive        = cbNonDestructive.Checked;
+
+            return true;
         }
 
         /// <summary>
