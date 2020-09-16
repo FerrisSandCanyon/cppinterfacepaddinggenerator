@@ -1,8 +1,11 @@
 ﻿//#define DISABLE_UPDATE_CHECK
 
+// TODO: implement shortcut keys
+
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using IPG.Extensions;
 
@@ -59,7 +62,7 @@ namespace IPG.Forms
             int _idx_count = -1;
             if (tbInterfaceName.Text.IsNullOrWhitespace() || tbPaddingCount.Text.IsNullOrWhitespace() || tbFunctionPrefix.Text.IsNullOrWhitespace() // Check for null strings or whitespace
             || !int.TryParse(tbPaddingCount.Text, out _idx_count) // Parse the index count
-            || Program.CurrentInstance.DefinedFunctions.HighestIndex() > _idx_count // Check for invalid padding count
+            || Program.CurrentInstance.DefinedFunctions.FirstOrDefault(x => x.Index > _idx_count) != null // Check for invalid padding count, padding count should be more than or equal to the highest defined index
             ) {
                 MessageBox.Show("Invalid values!", "IPG", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -153,6 +156,15 @@ namespace IPG.Forms
                 Program.CurrentInstance.DefinedFunctions.RemoveAll(x => x.Index.ToString() == lvi.SubItems[0].Text);
                 lvi.Remove();
             }
+        }
+
+        private void miNew_Click(object sender, EventArgs e)
+        {
+            Program.CurrentInstance = new Class.IPGInstance();
+            Program.CurrentFile = null;
+
+            LoadIPGToUI(Program.CurrentInstance);
+            SetTitle();
         }
     }
 }

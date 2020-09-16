@@ -60,6 +60,7 @@ namespace IPG.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.tbOutFile = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.miNew = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -125,6 +126,7 @@ namespace IPG.Forms
             // tsddFile
             // 
             this.tsddFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miNew,
             this.miOpen,
             this.miSave,
             this.miGenerate,
@@ -350,6 +352,13 @@ namespace IPG.Forms
             this.label3.TabIndex = 3;
             this.label3.Text = "Output file:";
             // 
+            // miNew
+            // 
+            this.miNew.Name = "miNew";
+            this.miNew.Size = new System.Drawing.Size(336, 22);
+            this.miNew.Text = "New";
+            this.miNew.Click += new System.EventHandler(this.miNew_Click);
+            // 
             // FMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -409,6 +418,7 @@ namespace IPG.Forms
         private System.Windows.Forms.TextBox tbFunctionPrefix;
         private System.Windows.Forms.Label label4;
         private ListView lvFunctions;
+        private ToolStripMenuItem miNew;
     }
 }
 

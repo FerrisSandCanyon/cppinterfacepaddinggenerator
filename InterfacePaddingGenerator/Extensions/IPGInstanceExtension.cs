@@ -40,7 +40,7 @@ namespace IPG.Extensions
             foreach (Class.InterfaceFunction ifn in instance)
                 if (ifn.Index > highest)
                     highest = ifn.Index;
-
+            
             return highest;
         }
     }
