@@ -233,9 +233,23 @@ namespace IPG.Forms
             Program.CurrentInstance.InterfaceName = ((TextBox)sender).Text;
         }
 
-        private void tbPaddingCount_TextChanged(object sender, EventArgs e)
+        private void tbPaddingCount_TextChanged(object _sender, EventArgs e)
         {
+            TextBox sender = ((TextBox)_sender);
 
+            // Automatically assign 0 if textbox is empty and set to -1 if parsing is required
+            int _idx_padding_count = sender.Text.IsNullOrWhitespace() ? 0 : -1;
+
+            // Only parse when set to -1
+            if (_idx_padding_count == -1
+            && (!int.TryParse(sender.Text, out _idx_padding_count) || _idx_padding_count < 0))
+            {
+                MessageBox.Show("Invalid value for Padding count", "Invalid value", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                sender.Text = Program.CurrentInstance.PaddingCount.ToString();
+                return;
+            }
+
+            Program.CurrentInstance.PaddingCount = _idx_padding_count;
         }
 
         private void tbFunctionPrefix_TextChanged(object sender, EventArgs e)
