@@ -129,8 +129,8 @@ namespace IPG.Forms
             this.miNew,
             this.miOpen,
             this.miSave,
-            this.miGenerate,
-            this.miSetOutput});
+            this.miSetOutput,
+            this.miGenerate});
             this.tsddFile.ForeColor = System.Drawing.Color.Black;
             this.tsddFile.Image = global::IPG.Properties.Resources.mainicon;
             this.tsddFile.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -188,7 +188,7 @@ namespace IPG.Forms
             // 
             this.miAdd.Image = global::IPG.Properties.Resources.plus;
             this.miAdd.Name = "miAdd";
-            this.miAdd.Size = new System.Drawing.Size(180, 22);
+            this.miAdd.Size = new System.Drawing.Size(117, 22);
             this.miAdd.Text = "Add";
             this.miAdd.Click += new System.EventHandler(this.miAdd_Click);
             // 
@@ -196,7 +196,7 @@ namespace IPG.Forms
             // 
             this.miRemove.Image = global::IPG.Properties.Resources.error;
             this.miRemove.Name = "miRemove";
-            this.miRemove.Size = new System.Drawing.Size(180, 22);
+            this.miRemove.Size = new System.Drawing.Size(117, 22);
             this.miRemove.Text = "Remove";
             this.miRemove.Click += new System.EventHandler(this.miRemove_Click);
             // 
@@ -204,7 +204,7 @@ namespace IPG.Forms
             // 
             this.miEdit.Image = global::IPG.Properties.Resources.edit;
             this.miEdit.Name = "miEdit";
-            this.miEdit.Size = new System.Drawing.Size(180, 22);
+            this.miEdit.Size = new System.Drawing.Size(117, 22);
             this.miEdit.Text = "Edit";
             this.miEdit.Click += new System.EventHandler(this.miEdit_Click);
             // 
@@ -289,6 +289,7 @@ namespace IPG.Forms
             this.cbNonDestructive.TabIndex = 3;
             this.cbNonDestructive.Text = "Non destructive";
             this.cbNonDestructive.UseVisualStyleBackColor = true;
+            this.cbNonDestructive.CheckedChanged += new System.EventHandler(this.cbNonDestructive_CheckedChanged);
             // 
             // cbNoPrefix
             // 
@@ -299,6 +300,7 @@ namespace IPG.Forms
             this.cbNoPrefix.TabIndex = 2;
             this.cbNoPrefix.Text = "Dont prefix with \"I\"";
             this.cbNoPrefix.UseVisualStyleBackColor = true;
+            this.cbNoPrefix.CheckedChanged += new System.EventHandler(this.cbNoPrefix_CheckedChanged);
             // 
             // tbPaddingCount
             // 

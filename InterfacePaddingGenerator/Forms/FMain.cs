@@ -256,5 +256,15 @@ namespace IPG.Forms
         {
             Program.CurrentInstance.PaddingFunctionPrefix = ((TextBox)sender).Text;
         }
+
+        private void cbNonDestructive_CheckedChanged(object sender, EventArgs e)
+        {
+            Program.CurrentInstance.NonDestructive = ((CheckBox)sender).Checked;
+        }
+
+        private void cbNoPrefix_CheckedChanged(object sender, EventArgs e)
+        {
+            Program.CurrentInstance.NoPrefix = ((CheckBox)sender).Checked;
+        }
     }
 }
