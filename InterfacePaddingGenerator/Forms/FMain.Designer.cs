@@ -37,6 +37,7 @@ namespace IPG.Forms
             this.chFunction = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tsMain = new System.Windows.Forms.ToolStrip();
             this.tsddFile = new System.Windows.Forms.ToolStripDropDownButton();
+            this.miNew = new System.Windows.Forms.ToolStripMenuItem();
             this.miOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.miSave = new System.Windows.Forms.ToolStripMenuItem();
             this.miGenerate = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,7 +61,6 @@ namespace IPG.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.tbOutFile = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.miNew = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -138,17 +138,26 @@ namespace IPG.Forms
             this.tsddFile.Size = new System.Drawing.Size(54, 22);
             this.tsddFile.Text = "File";
             // 
+            // miNew
+            // 
+            this.miNew.Name = "miNew";
+            this.miNew.Size = new System.Drawing.Size(336, 22);
+            this.miNew.Text = "New";
+            this.miNew.Click += new System.EventHandler(this.miNew_Click);
+            // 
             // miOpen
             // 
             this.miOpen.Name = "miOpen";
             this.miOpen.Size = new System.Drawing.Size(336, 22);
             this.miOpen.Text = "Open Interface Padding Generator (*.ipg) File";
+            this.miOpen.Click += new System.EventHandler(this.miOpen_Click);
             // 
             // miSave
             // 
             this.miSave.Name = "miSave";
             this.miSave.Size = new System.Drawing.Size(336, 22);
             this.miSave.Text = "Save as an Interface Padding Generator (*.ipg) File";
+            this.miSave.Click += new System.EventHandler(this.miSave_Click);
             // 
             // miGenerate
             // 
@@ -179,7 +188,7 @@ namespace IPG.Forms
             // 
             this.miAdd.Image = global::IPG.Properties.Resources.plus;
             this.miAdd.Name = "miAdd";
-            this.miAdd.Size = new System.Drawing.Size(117, 22);
+            this.miAdd.Size = new System.Drawing.Size(180, 22);
             this.miAdd.Text = "Add";
             this.miAdd.Click += new System.EventHandler(this.miAdd_Click);
             // 
@@ -187,7 +196,7 @@ namespace IPG.Forms
             // 
             this.miRemove.Image = global::IPG.Properties.Resources.error;
             this.miRemove.Name = "miRemove";
-            this.miRemove.Size = new System.Drawing.Size(117, 22);
+            this.miRemove.Size = new System.Drawing.Size(180, 22);
             this.miRemove.Text = "Remove";
             this.miRemove.Click += new System.EventHandler(this.miRemove_Click);
             // 
@@ -195,7 +204,7 @@ namespace IPG.Forms
             // 
             this.miEdit.Image = global::IPG.Properties.Resources.edit;
             this.miEdit.Name = "miEdit";
-            this.miEdit.Size = new System.Drawing.Size(117, 22);
+            this.miEdit.Size = new System.Drawing.Size(180, 22);
             this.miEdit.Text = "Edit";
             this.miEdit.Click += new System.EventHandler(this.miEdit_Click);
             // 
@@ -258,6 +267,7 @@ namespace IPG.Forms
             this.tbFunctionPrefix.Name = "tbFunctionPrefix";
             this.tbFunctionPrefix.Size = new System.Drawing.Size(153, 22);
             this.tbFunctionPrefix.TabIndex = 7;
+            this.tbFunctionPrefix.TextChanged += new System.EventHandler(this.tbFunctionPrefix_TextChanged);
             // 
             // label4
             // 
@@ -300,6 +310,7 @@ namespace IPG.Forms
             this.tbPaddingCount.Size = new System.Drawing.Size(153, 22);
             this.tbPaddingCount.TabIndex = 5;
             this.tbPaddingCount.Text = "0";
+            this.tbPaddingCount.TextChanged += new System.EventHandler(this.tbPaddingCount_TextChanged);
             // 
             // label2
             // 
@@ -319,6 +330,7 @@ namespace IPG.Forms
             this.tbInterfaceName.Name = "tbInterfaceName";
             this.tbInterfaceName.Size = new System.Drawing.Size(153, 22);
             this.tbInterfaceName.TabIndex = 1;
+            this.tbInterfaceName.TextChanged += new System.EventHandler(this.tbInterfaceName_TextChanged);
             // 
             // label1
             // 
@@ -351,13 +363,6 @@ namespace IPG.Forms
             this.label3.Size = new System.Drawing.Size(67, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "Output file:";
-            // 
-            // miNew
-            // 
-            this.miNew.Name = "miNew";
-            this.miNew.Size = new System.Drawing.Size(336, 22);
-            this.miNew.Text = "New";
-            this.miNew.Click += new System.EventHandler(this.miNew_Click);
             // 
             // FMain
             // 

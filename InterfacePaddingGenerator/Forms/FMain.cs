@@ -59,10 +59,10 @@ namespace IPG.Forms
         public bool LoadUIToIPG()
         {
             // TODO: sanity check for class name
-            int _idx_count = -1;
+            int _idx_padding_count = -1;
             if (tbInterfaceName.Text.IsNullOrWhitespace() || tbPaddingCount.Text.IsNullOrWhitespace() || tbFunctionPrefix.Text.IsNullOrWhitespace() // Check for null strings or whitespace
-            || !int.TryParse(tbPaddingCount.Text, out _idx_count) // Parse the index count
-            || Program.CurrentInstance.DefinedFunctions.FirstOrDefault(x => x.Index > _idx_count) != null // Check for invalid padding count, padding count should be more than or equal to the highest defined index
+            || !int.TryParse(tbPaddingCount.Text, out _idx_padding_count) // Parse the index count
+            ||  Program.CurrentInstance.DefinedFunctions.FirstOrDefault(x => x.Index > _idx_padding_count) != null // Check for invalid padding count, padding count should be more than or equal to the highest defined index
             ) {
                 MessageBox.Show("Invalid values!", "IPG", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -70,7 +70,7 @@ namespace IPG.Forms
 
             Program.CurrentInstance.InterfaceName         = tbInterfaceName.Text;
             Program.CurrentInstance.PaddingFunctionPrefix = tbFunctionPrefix.Text;
-            Program.CurrentInstance.PaddingCount          = _idx_count;
+            Program.CurrentInstance.PaddingCount          = _idx_padding_count;
             Program.CurrentInstance.NoPrefix              = cbNoPrefix.Checked;
             Program.CurrentInstance.NonDestructive        = cbNonDestructive.Checked;
 
@@ -161,10 +161,86 @@ namespace IPG.Forms
         private void miNew_Click(object sender, EventArgs e)
         {
             Program.CurrentInstance = new Class.IPGInstance();
-            Program.CurrentFile = null;
+            Program.CurrentFile     = null;
 
             LoadIPGToUI(Program.CurrentInstance);
             SetTitle();
+        }
+
+        private void miOpen_Click(object sender, EventArgs e)
+        {
+            // Create a open file dialog and load it
+            using (OpenFileDialog _ofd = new OpenFileDialog())
+            {
+                _ofd.Filter = "IPG File (*.ipg) | *.ipg";
+                _ofd.Multiselect = false;
+
+                if (_ofd.ShowDialog() != DialogResult.OK)
+                    return;
+
+                if (!Utils.IPGInstance.LoadFromFileAndSetup(_ofd.FileName))
+                {
+                    MessageBox.Show($"Failed to load {_ofd.FileName}!", "Load IPG", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                Program.CurrentFile = _ofd.FileName;
+                Program.FormMain.SetTitle();
+            }
+        }
+
+        private void miSave_Click(object sender, EventArgs e)
+        {
+            bool   newSave = false;               // Tracks if the save is a new file
+            string path    = Program.CurrentFile; // Load the save path
+
+            // Verify path and opt for save path if necessary
+            if (path == null || !File.Exists(path))
+            {
+                using (SaveFileDialog _sfd = new SaveFileDialog())
+                {
+                    _sfd.Filter = "IPG File (*.ipg) | *.ipg";
+
+                    if (_sfd.ShowDialog() != DialogResult.OK)
+                        return;
+
+                    // File extension check
+                    if (!_sfd.FileName.EndsWith(".ipg"))
+                        _sfd.FileName += ".ipg";
+
+                    path    = _sfd.FileName;
+                    newSave = true;
+                }
+            }
+
+            // Save the file. Prompt for new file otherwise automatically overwrite
+            if (!Utils.IPGInstance.SaveToFile(in Program.CurrentInstance, path, newSave ? Utils.IPGInstance.WriteMode.PROMPT_USER : Utils.IPGInstance.WriteMode.OVERWRITE))
+            {
+                MessageBox.Show($"Failed to save {path}!", "Save IPG", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Set values if its a new file
+            if (newSave)
+            {
+                Program.CurrentFile = path;
+                Program.FormMain.SetTitle();
+            }
+        }
+
+        private void tbInterfaceName_TextChanged(object sender, EventArgs e)
+        {
+            Program.CurrentInstance.InterfaceName = ((TextBox)sender).Text;
+        }
+
+        private void tbPaddingCount_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbFunctionPrefix_TextChanged(object sender, EventArgs e)
+        {
+            Program.CurrentInstance.PaddingFunctionPrefix = ((TextBox)sender).Text;
         }
     }
 }
