@@ -170,6 +170,7 @@ namespace IPG.Forms
             this.miSetOutput.Name = "miSetOutput";
             this.miSetOutput.Size = new System.Drawing.Size(336, 22);
             this.miSetOutput.Text = "Set output file";
+            this.miSetOutput.Click += new System.EventHandler(this.miSetOutput_Click);
             // 
             // ddCustomInterface
             // 

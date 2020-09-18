@@ -42,6 +42,7 @@ namespace IPG.Forms
             tbFunctionPrefix.Text    = instance.PaddingFunctionPrefix;
             cbNoPrefix.Checked       = instance.NoPrefix;
             cbNonDestructive.Checked = instance.NonDestructive;
+            tbOutFile.Text           = instance.OutputFile;
 
             lvFunctions.Items.Clear();
             foreach (Class.InterfaceFunction ifacefn in instance.DefinedFunctions)
@@ -265,6 +266,19 @@ namespace IPG.Forms
         private void cbNoPrefix_CheckedChanged(object sender, EventArgs e)
         {
             Program.CurrentInstance.NoPrefix = ((CheckBox)sender).Checked;
+        }
+
+        private void miSetOutput_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog _sfd = new SaveFileDialog())
+            {
+                _sfd.Filter = "C++ Header File (*.h, *.hpp) | *.h;*.hpp ";
+                
+                if (_sfd.ShowDialog() != DialogResult.OK)
+                    return;
+
+                tbOutFile.Text =  Program.CurrentInstance.OutputFile = _sfd.FileName;
+            }
         }
     }
 }
