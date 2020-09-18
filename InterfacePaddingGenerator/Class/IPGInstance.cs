@@ -40,14 +40,7 @@ namespace IPG.Class
         public bool NonDestructive = true;
 
         /// <summary>
-        /// No "I" perfix on interface class name option
-        /// </summary>
-        public bool NoPrefix = false;
-
-        /// <summary>
         /// List of defined interface functions
-        /// int    = vtable index
-        /// string = interface function
         /// </summary>
         public List<Class.InterfaceFunction> DefinedFunctions = new List<Class.InterfaceFunction> { };
 

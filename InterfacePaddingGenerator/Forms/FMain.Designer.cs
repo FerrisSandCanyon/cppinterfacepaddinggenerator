@@ -54,7 +54,6 @@ namespace IPG.Forms
             this.tbFunctionPrefix = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cbNonDestructive = new System.Windows.Forms.CheckBox();
-            this.cbNoPrefix = new System.Windows.Forms.CheckBox();
             this.tbFunctionCount = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tbInterfaceName = new System.Windows.Forms.TextBox();
@@ -246,7 +245,6 @@ namespace IPG.Forms
             this.groupBox2.Controls.Add(this.tbFunctionPrefix);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.cbNonDestructive);
-            this.groupBox2.Controls.Add(this.cbNoPrefix);
             this.groupBox2.Controls.Add(this.tbFunctionCount);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.tbInterfaceName);
@@ -284,24 +282,13 @@ namespace IPG.Forms
             this.cbNonDestructive.AutoSize = true;
             this.cbNonDestructive.Checked = true;
             this.cbNonDestructive.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbNonDestructive.Location = new System.Drawing.Point(451, 52);
+            this.cbNonDestructive.Location = new System.Drawing.Point(296, 52);
             this.cbNonDestructive.Name = "cbNonDestructive";
             this.cbNonDestructive.Size = new System.Drawing.Size(107, 17);
             this.cbNonDestructive.TabIndex = 3;
             this.cbNonDestructive.Text = "Non destructive";
             this.cbNonDestructive.UseVisualStyleBackColor = true;
             this.cbNonDestructive.CheckedChanged += new System.EventHandler(this.cbNonDestructive_CheckedChanged);
-            // 
-            // cbNoPrefix
-            // 
-            this.cbNoPrefix.AutoSize = true;
-            this.cbNoPrefix.Location = new System.Drawing.Point(321, 52);
-            this.cbNoPrefix.Name = "cbNoPrefix";
-            this.cbNoPrefix.Size = new System.Drawing.Size(124, 17);
-            this.cbNoPrefix.TabIndex = 2;
-            this.cbNoPrefix.Text = "Dont prefix with \"I\"";
-            this.cbNoPrefix.UseVisualStyleBackColor = true;
-            this.cbNoPrefix.CheckedChanged += new System.EventHandler(this.cbNoPrefix_CheckedChanged);
             // 
             // tbFunctionCount
             // 
@@ -410,7 +397,6 @@ namespace IPG.Forms
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox tbInterfaceName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox cbNoPrefix;
         private System.Windows.Forms.ToolStripMenuItem miGenerate;
         private System.Windows.Forms.TextBox tbFunctionCount;
         private System.Windows.Forms.Label label2;

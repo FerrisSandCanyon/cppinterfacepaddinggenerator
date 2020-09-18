@@ -40,7 +40,6 @@ namespace IPG.Forms
             tbInterfaceName.Text     = instance.InterfaceName;
             tbFunctionCount.Text      = instance.FunctionCount.ToString();
             tbFunctionPrefix.Text    = instance.PaddingFunctionPrefix;
-            cbNoPrefix.Checked       = instance.NoPrefix;
             cbNonDestructive.Checked = instance.NonDestructive;
             tbOutFile.Text           = instance.OutputFile;
 
@@ -73,7 +72,6 @@ namespace IPG.Forms
             Program.CurrentInstance.InterfaceName         = tbInterfaceName.Text;
             Program.CurrentInstance.PaddingFunctionPrefix = tbFunctionPrefix.Text;
             Program.CurrentInstance.FunctionCount         = idx_function_count;
-            Program.CurrentInstance.NoPrefix              = cbNoPrefix.Checked;
             Program.CurrentInstance.NonDestructive        = cbNonDestructive.Checked;
 
             return true;
@@ -106,7 +104,6 @@ namespace IPG.Forms
             if (MessageBox.Show(
             // ========================================================================
                 "Automatically generates function padding for C++ interface classes\n\n" +
-                "[Dont prefix with \"I\"] - Disables prefixing the class name with I\n\n" +
                 "[Non destructive] - When checked IPG analyzes the file and only overwrites virtual functions leaving custom functions, includes, comments, inherits, etc... untouched.\n\n" +
                 "Icons made by iconixar, kiranshastry from www.flaticon.com\n\n" +
                 "This software is licensed under MIT and is fully a FOSS\n\n" +
@@ -264,11 +261,6 @@ namespace IPG.Forms
         private void cbNonDestructive_CheckedChanged(object sender, EventArgs e)
         {
             Program.CurrentInstance.NonDestructive = ((CheckBox)sender).Checked;
-        }
-
-        private void cbNoPrefix_CheckedChanged(object sender, EventArgs e)
-        {
-            Program.CurrentInstance.NoPrefix = ((CheckBox)sender).Checked;
         }
 
         private void miSetOutput_Click(object sender, EventArgs e)
