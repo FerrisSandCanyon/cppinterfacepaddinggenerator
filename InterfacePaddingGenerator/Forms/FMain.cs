@@ -275,5 +275,12 @@ namespace IPG.Forms
                 tbOutFile.Text =  Program.CurrentInstance.OutputFile = _sfd.FileName;
             }
         }
+
+        private void miGenerate_Click(object sender, EventArgs e)
+        {
+            #if DEBUG
+                Debug.WriteLine(Program.CurrentInstance.GenerateStatic());
+            #endif
+        }
     }
 }

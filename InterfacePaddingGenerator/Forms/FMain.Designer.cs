@@ -170,6 +170,7 @@ namespace IPG.Forms
             this.miGenerate.Name = "miGenerate";
             this.miGenerate.Size = new System.Drawing.Size(336, 22);
             this.miGenerate.Text = "Generate Interface";
+            this.miGenerate.Click += new System.EventHandler(this.miGenerate_Click);
             // 
             // ddCustomInterface
             // 

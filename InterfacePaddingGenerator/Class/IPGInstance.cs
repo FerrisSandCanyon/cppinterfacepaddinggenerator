@@ -2,8 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+using IPG.Extensions;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace IPG.Class
 {
@@ -44,17 +45,37 @@ namespace IPG.Class
         /// </summary>
         public List<Class.InterfaceFunction> DefinedFunctions = new List<Class.InterfaceFunction> { };
 
-        public bool VerifyValues()
-        {
-            return false;
-        }
-
+        /// <summary>
+        /// Generates an interface class based off the current instance
+        /// </summary>
+        /// <returns></returns>
         public string GenerateStatic()
         {
-            string final = "";
+            string final = 
+                $"class {this.InterfaceName}\n" +
+                "{";
+
+            for (int idx = 0; idx < this.FunctionCount; idx++)
+            {
+                string fnstr = null;
+                Class.InterfaceFunction ifn = Program.CurrentInstance.DefinedFunctions.FirstOrDefault(x => x.Index == idx);
+
+                fnstr = ifn == null ? $"virtual void {this.PaddingFunctionPrefix}_{idx}(void)" : ifn.FunctionSignature;
+
+                if (!fnstr.StartsWith("virtual"))
+                    fnstr = fnstr.Insert(0, "virtual ");
+
+                if (!fnstr.Replace(" ", "").EndsWith("=0;"))
+                    fnstr += " = 0;";
+
+                final += $"\n\t{fnstr}";
+            }
+
+            final += "\n}";
 
             return final;
         }
+
     }
 }
 
