@@ -43,5 +43,18 @@ namespace IPG.Extensions
             
             return highest;
         }
+
+        /// <summary>
+        /// Wrapper function that Serializes an IPGInstance class and saves it to the provided destination
+        /// </summary>
+        /// <param name="instance">An instance of the IPGInstance class</param>
+        /// <param name="filepath">File path to save as</param>
+        /// <param name="writemode">Writing mode to use</param>
+        /// <returns>[bool] Returns true if successful, false otherwise.</returns>
+        /// <remarks>This is a wrapper extension for Utils.IPGInstance.SaveToFile()</remarks>
+        public static bool SaveToFile(this Class.IPGInstance instance, string filepath, Utils.IPGInstance.WriteMode writemode)
+        {
+            return Utils.IPGInstance.SaveToFile(in instance, filepath, writemode);
+        }
     }
 }

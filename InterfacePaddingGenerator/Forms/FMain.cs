@@ -215,7 +215,7 @@ namespace IPG.Forms
             }
 
             // Save the file. Prompt for new file otherwise automatically overwrite
-            if (!Utils.IPGInstance.SaveToFile(in Program.CurrentInstance, path, newSave ? Utils.IPGInstance.WriteMode.PROMPT_USER : Utils.IPGInstance.WriteMode.OVERWRITE))
+            if (!Program.CurrentInstance.SaveToFile(path, newSave ? Utils.IPGInstance.WriteMode.PROMPT_USER : Utils.IPGInstance.WriteMode.OVERWRITE))
             {
                 MessageBox.Show($"Failed to save {path}!", "Save IPG", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
