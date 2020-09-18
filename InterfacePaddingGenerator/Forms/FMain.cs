@@ -205,10 +205,6 @@ namespace IPG.Forms
                     if (_sfd.ShowDialog() != DialogResult.OK)
                         return;
 
-                    // File extension check
-                    if (!_sfd.FileName.EndsWith(".ipg"))
-                        _sfd.FileName += ".ipg";
-
                     path    = _sfd.FileName;
                     newSave = true;
                 }
