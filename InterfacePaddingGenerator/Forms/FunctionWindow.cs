@@ -97,6 +97,13 @@ namespace IPG.Forms
 
             // TODO: sanity check for function name
 
+            // Make sure that the idx is within function count range
+            if (_idx > Program.CurrentInstance.FunctionCount)
+            {
+                MessageBox.Show("Index is out of the function count range", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             switch (Mode)
             {
                 case FWMode.ADD:

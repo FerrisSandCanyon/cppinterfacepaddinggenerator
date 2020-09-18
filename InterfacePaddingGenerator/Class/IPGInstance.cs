@@ -22,7 +22,7 @@ namespace IPG.Class
         /// <summary>
         /// Number of virtual function padding
         /// </summary>
-        public int PaddingCount = 0;
+        public int FunctionCount = 0;
 
         /// <summary>
         /// Prefix to the virtual funtion padding name
@@ -50,6 +50,18 @@ namespace IPG.Class
         /// string = interface function
         /// </summary>
         public List<Class.InterfaceFunction> DefinedFunctions = new List<Class.InterfaceFunction> { };
+
+        public bool VerifyValues()
+        {
+            return false;
+        }
+
+        public string GenerateStatic()
+        {
+            string final = "";
+
+            return final;
+        }
     }
 }
 

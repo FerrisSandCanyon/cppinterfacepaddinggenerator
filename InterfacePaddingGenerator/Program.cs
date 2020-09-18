@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -20,7 +19,12 @@ namespace IPG
         /// <summary>
         /// Default title for the main form
         /// </summary>
-        public static readonly string DefaultTitle = "C++ Interface Padding Generator";
+        public static readonly string DefaultTitle =
+        #if DEBUG
+            "C++ Interface Padding Generator [debug]";
+        #else
+            "C++ Interface Padding Generator";
+        #endif
 
         /// <summary>
         /// Path to the current IPG file loaded

@@ -38,7 +38,7 @@ namespace IPG.Forms
         public void LoadIPGToUI(in Class.IPGInstance instance)
         {
             tbInterfaceName.Text     = instance.InterfaceName;
-            tbPaddingCount.Text      = instance.PaddingCount.ToString();
+            tbFunctionCount.Text      = instance.FunctionCount.ToString();
             tbFunctionPrefix.Text    = instance.PaddingFunctionPrefix;
             cbNoPrefix.Checked       = instance.NoPrefix;
             cbNonDestructive.Checked = instance.NonDestructive;
@@ -57,13 +57,14 @@ namespace IPG.Forms
         /// Loads the UI values to the IPG Instance
         /// </summary>
         /// <returns>[bool] Returns true if successful, false otherwise</returns>
+        /// <remarks>I forgot i made this function</remarks>
         public bool LoadUIToIPG()
         {
             // TODO: sanity check for class name
-            int _idx_padding_count = -1;
-            if (tbInterfaceName.Text.IsNullOrWhitespace() || tbPaddingCount.Text.IsNullOrWhitespace() || tbFunctionPrefix.Text.IsNullOrWhitespace() // Check for null strings or whitespace
-            || !int.TryParse(tbPaddingCount.Text, out _idx_padding_count) // Parse the index count
-            ||  Program.CurrentInstance.DefinedFunctions.FirstOrDefault(x => x.Index > _idx_padding_count) != null // Check for invalid padding count, padding count should be more than or equal to the highest defined index
+            int idx_function_count = -1;
+            if (tbInterfaceName.Text.IsNullOrWhitespace() || tbFunctionCount.Text.IsNullOrWhitespace() || tbFunctionPrefix.Text.IsNullOrWhitespace() // Check for null strings or whitespace
+            || !int.TryParse(tbFunctionCount.Text, out idx_function_count) // Parse the index count
+            ||  Program.CurrentInstance.DefinedFunctions.FirstOrDefault(x => x.Index > idx_function_count) != null // Check for invalid padding count, padding count should be more than or equal to the highest defined index
             ) {
                 MessageBox.Show("Invalid values!", "IPG", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -71,7 +72,7 @@ namespace IPG.Forms
 
             Program.CurrentInstance.InterfaceName         = tbInterfaceName.Text;
             Program.CurrentInstance.PaddingFunctionPrefix = tbFunctionPrefix.Text;
-            Program.CurrentInstance.PaddingCount          = _idx_padding_count;
+            Program.CurrentInstance.FunctionCount         = idx_function_count;
             Program.CurrentInstance.NoPrefix              = cbNoPrefix.Checked;
             Program.CurrentInstance.NonDestructive        = cbNonDestructive.Checked;
 
@@ -92,6 +93,10 @@ namespace IPG.Forms
                 lblVer.IsLink = false;
             #endif
 
+            #if !DEBUG
+                cbNonDestructive.Visible = false;
+            #endif
+
             lblVer.Text = "Version: " + Program.VersionString; // Set version
             SetTitle();
         }
@@ -99,7 +104,7 @@ namespace IPG.Forms
         private void btnAbout_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show(
-                // ========================================================================
+            // ========================================================================
                 "Automatically generates function padding for C++ interface classes\n\n" +
                 "[Dont prefix with \"I\"] - Disables prefixing the class name with I\n\n" +
                 "[Non destructive] - When checked IPG analyzes the file and only overwrites virtual functions leaving custom functions, includes, comments, inherits, etc... untouched.\n\n" +
@@ -108,7 +113,9 @@ namespace IPG.Forms
                 "Would you like to open the project's Github page? github.com/ferrissandcanyon/cppinterfacepaddinggenerator"
             // ========================================================================
             , Program.DefaultTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
                 Process.Start("https://github.com/ferrissandcanyon/cppinterfacepaddinggenerator");
+            }
         }
 
         private void lblVer_Click(object sender, EventArgs e)
@@ -235,18 +242,18 @@ namespace IPG.Forms
             TextBox sender = ((TextBox)_sender);
 
             // Automatically assign 0 if textbox is empty and set to -1 if parsing is required
-            int _idx_padding_count = sender.Text.IsNullOrWhitespace() ? 0 : -1;
+            int idx_function_cout = sender.Text.IsNullOrWhitespace() ? 0 : -1;
 
             // Only parse when set to -1
-            if (_idx_padding_count == -1
-            && (!int.TryParse(sender.Text, out _idx_padding_count) || _idx_padding_count < 0))
+            if (idx_function_cout == -1
+            && (!int.TryParse(sender.Text, out idx_function_cout) || idx_function_cout < 0) || Program.CurrentInstance.DefinedFunctions.FirstOrDefault(x => x.Index > idx_function_cout) != null)
             {
-                MessageBox.Show("Invalid value for Padding count", "Invalid value", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                sender.Text = Program.CurrentInstance.PaddingCount.ToString();
+                MessageBox.Show("Invalid value for Function count", "Invalid value", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                sender.Text = Program.CurrentInstance.FunctionCount.ToString();
                 return;
             }
 
-            Program.CurrentInstance.PaddingCount = _idx_padding_count;
+            Program.CurrentInstance.FunctionCount = idx_function_cout;
         }
 
         private void tbFunctionPrefix_TextChanged(object sender, EventArgs e)

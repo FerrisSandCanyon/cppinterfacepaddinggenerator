@@ -40,8 +40,8 @@ namespace IPG.Forms
             this.miNew = new System.Windows.Forms.ToolStripMenuItem();
             this.miOpen = new System.Windows.Forms.ToolStripMenuItem();
             this.miSave = new System.Windows.Forms.ToolStripMenuItem();
-            this.miGenerate = new System.Windows.Forms.ToolStripMenuItem();
             this.miSetOutput = new System.Windows.Forms.ToolStripMenuItem();
+            this.miGenerate = new System.Windows.Forms.ToolStripMenuItem();
             this.ddCustomInterface = new System.Windows.Forms.ToolStripDropDownButton();
             this.miAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.miRemove = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,7 +55,7 @@ namespace IPG.Forms
             this.label4 = new System.Windows.Forms.Label();
             this.cbNonDestructive = new System.Windows.Forms.CheckBox();
             this.cbNoPrefix = new System.Windows.Forms.CheckBox();
-            this.tbPaddingCount = new System.Windows.Forms.TextBox();
+            this.tbFunctionCount = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tbInterfaceName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -159,18 +159,18 @@ namespace IPG.Forms
             this.miSave.Text = "Save as an Interface Padding Generator (*.ipg) File";
             this.miSave.Click += new System.EventHandler(this.miSave_Click);
             // 
-            // miGenerate
-            // 
-            this.miGenerate.Name = "miGenerate";
-            this.miGenerate.Size = new System.Drawing.Size(336, 22);
-            this.miGenerate.Text = "Generate Interface";
-            // 
             // miSetOutput
             // 
             this.miSetOutput.Name = "miSetOutput";
             this.miSetOutput.Size = new System.Drawing.Size(336, 22);
             this.miSetOutput.Text = "Set output file";
             this.miSetOutput.Click += new System.EventHandler(this.miSetOutput_Click);
+            // 
+            // miGenerate
+            // 
+            this.miGenerate.Name = "miGenerate";
+            this.miGenerate.Size = new System.Drawing.Size(336, 22);
+            this.miGenerate.Text = "Generate Interface";
             // 
             // ddCustomInterface
             // 
@@ -247,7 +247,7 @@ namespace IPG.Forms
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.cbNonDestructive);
             this.groupBox2.Controls.Add(this.cbNoPrefix);
-            this.groupBox2.Controls.Add(this.tbPaddingCount);
+            this.groupBox2.Controls.Add(this.tbFunctionCount);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Controls.Add(this.tbInterfaceName);
             this.groupBox2.Controls.Add(this.label1);
@@ -303,17 +303,17 @@ namespace IPG.Forms
             this.cbNoPrefix.UseVisualStyleBackColor = true;
             this.cbNoPrefix.CheckedChanged += new System.EventHandler(this.cbNoPrefix_CheckedChanged);
             // 
-            // tbPaddingCount
+            // tbFunctionCount
             // 
-            this.tbPaddingCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.tbPaddingCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tbPaddingCount.ForeColor = System.Drawing.Color.White;
-            this.tbPaddingCount.Location = new System.Drawing.Point(134, 50);
-            this.tbPaddingCount.Name = "tbPaddingCount";
-            this.tbPaddingCount.Size = new System.Drawing.Size(153, 22);
-            this.tbPaddingCount.TabIndex = 5;
-            this.tbPaddingCount.Text = "0";
-            this.tbPaddingCount.TextChanged += new System.EventHandler(this.tbPaddingCount_TextChanged);
+            this.tbFunctionCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.tbFunctionCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbFunctionCount.ForeColor = System.Drawing.Color.White;
+            this.tbFunctionCount.Location = new System.Drawing.Point(134, 50);
+            this.tbFunctionCount.Name = "tbFunctionCount";
+            this.tbFunctionCount.Size = new System.Drawing.Size(153, 22);
+            this.tbFunctionCount.TabIndex = 5;
+            this.tbFunctionCount.Text = "0";
+            this.tbFunctionCount.TextChanged += new System.EventHandler(this.tbPaddingCount_TextChanged);
             // 
             // label2
             // 
@@ -412,7 +412,7 @@ namespace IPG.Forms
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox cbNoPrefix;
         private System.Windows.Forms.ToolStripMenuItem miGenerate;
-        private System.Windows.Forms.TextBox tbPaddingCount;
+        private System.Windows.Forms.TextBox tbFunctionCount;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox cbNonDestructive;
         private System.Windows.Forms.TextBox tbOutFile;
