@@ -246,7 +246,7 @@ namespace IPG.Forms
             && (!int.TryParse(sender.Text, out idx_function_cout) || idx_function_cout < 0) || Program.CurrentInstance.DefinedFunctions.FirstOrDefault(x => x.Index > idx_function_cout) != null)
             {
                 MessageBox.Show("Invalid value for Function count", "Invalid value", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                sender.Text = Program.CurrentInstance.FunctionCount.ToString();
+                sender.Text = (Program.CurrentInstance.FunctionCount = Program.CurrentInstance.DefinedFunctions.HighestIndex()).ToString();
                 return;
             }
 

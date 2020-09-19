@@ -28,7 +28,7 @@ namespace IPG.Class
         /// <summary>
         /// Prefix to the virtual funtion padding name
         /// </summary>
-        public string PaddingFunctionPrefix = "";
+        public string PaddingFunctionPrefix = "pad";
 
         /// <summary>
         /// Path to the output file
@@ -53,7 +53,8 @@ namespace IPG.Class
         {
             string final = 
                 $"class {this.InterfaceName}\n" +
-                "{";
+                "{\n" +
+                "public:";
 
             for (int idx = 0; idx < this.FunctionCount; idx++)
             {
