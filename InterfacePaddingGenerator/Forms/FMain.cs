@@ -99,6 +99,63 @@ namespace IPG.Forms
             SetTitle();
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                // New
+                case Keys.Control | Keys.N:
+                {
+                    miNew_Click(miNew, null);
+                    return true;
+                }
+
+                // Open
+                case Keys.Control | Keys.O:
+                {
+                    miOpen_Click(miOpen, null);
+                    return true;
+                }
+
+                // Save
+                case Keys.Control | Keys.S:
+                {
+                    miSave_Click(miSave, null);
+                    return true;
+                }
+
+                // Generate
+                case Keys.Control | Keys.G:
+                {
+                    miGenerate_Click(miGenerate, null);
+                    return true;
+                }
+
+                // Add
+                case Keys.Control | Keys.A:
+                {
+                    miAdd_Click(miAdd, null);
+                    return true;
+                }
+
+                // Remove
+                case Keys.Delete:
+                {
+                    miRemove_Click(miRemove, null);
+                    return true;
+                }
+
+                // Edit
+                case Keys.Control | Keys.E:
+                {
+                    miEdit_Click(miEdit, null);
+                    return true;
+                }
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         private void btnAbout_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show(
@@ -278,9 +335,7 @@ namespace IPG.Forms
 
         private void miGenerate_Click(object sender, EventArgs e)
         {
-            #if DEBUG
-                Debug.WriteLine(Program.CurrentInstance.GenerateStatic());
-            #endif
+            new Forms.FPreview().ShowDialog();
         }
     }
 }

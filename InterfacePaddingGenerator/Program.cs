@@ -47,6 +47,7 @@ namespace IPG
         [STAThread]
         static void Main(string[] args)
         {
+            // TODO: add command line args
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(FormMain = new Forms.FMain(args.Count() > 0 ? args[0] : null));

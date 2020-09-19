@@ -140,36 +140,36 @@ namespace IPG.Forms
             // miNew
             // 
             this.miNew.Name = "miNew";
-            this.miNew.Size = new System.Drawing.Size(336, 22);
-            this.miNew.Text = "New";
+            this.miNew.Size = new System.Drawing.Size(222, 22);
+            this.miNew.Text = "New IPG (Ctrl + N)";
             this.miNew.Click += new System.EventHandler(this.miNew_Click);
             // 
             // miOpen
             // 
             this.miOpen.Name = "miOpen";
-            this.miOpen.Size = new System.Drawing.Size(336, 22);
-            this.miOpen.Text = "Open Interface Padding Generator (*.ipg) File";
+            this.miOpen.Size = new System.Drawing.Size(222, 22);
+            this.miOpen.Text = "Open IPG File (Ctrl + O)";
             this.miOpen.Click += new System.EventHandler(this.miOpen_Click);
             // 
             // miSave
             // 
             this.miSave.Name = "miSave";
-            this.miSave.Size = new System.Drawing.Size(336, 22);
-            this.miSave.Text = "Save as an Interface Padding Generator (*.ipg) File";
+            this.miSave.Size = new System.Drawing.Size(222, 22);
+            this.miSave.Text = "Save IPG File (Ctrl + S)";
             this.miSave.Click += new System.EventHandler(this.miSave_Click);
             // 
             // miSetOutput
             // 
             this.miSetOutput.Name = "miSetOutput";
-            this.miSetOutput.Size = new System.Drawing.Size(336, 22);
+            this.miSetOutput.Size = new System.Drawing.Size(222, 22);
             this.miSetOutput.Text = "Set output file";
             this.miSetOutput.Click += new System.EventHandler(this.miSetOutput_Click);
             // 
             // miGenerate
             // 
             this.miGenerate.Name = "miGenerate";
-            this.miGenerate.Size = new System.Drawing.Size(336, 22);
-            this.miGenerate.Text = "Generate Interface";
+            this.miGenerate.Size = new System.Drawing.Size(222, 22);
+            this.miGenerate.Text = "Generate Interface (Ctrl + G)";
             this.miGenerate.Click += new System.EventHandler(this.miGenerate_Click);
             // 
             // ddCustomInterface
@@ -189,24 +189,24 @@ namespace IPG.Forms
             // 
             this.miAdd.Image = global::IPG.Properties.Resources.plus;
             this.miAdd.Name = "miAdd";
-            this.miAdd.Size = new System.Drawing.Size(117, 22);
-            this.miAdd.Text = "Add";
+            this.miAdd.Size = new System.Drawing.Size(180, 22);
+            this.miAdd.Text = "Add (Ctrl + A)";
             this.miAdd.Click += new System.EventHandler(this.miAdd_Click);
             // 
             // miRemove
             // 
             this.miRemove.Image = global::IPG.Properties.Resources.error;
             this.miRemove.Name = "miRemove";
-            this.miRemove.Size = new System.Drawing.Size(117, 22);
-            this.miRemove.Text = "Remove";
+            this.miRemove.Size = new System.Drawing.Size(180, 22);
+            this.miRemove.Text = "Remove (Delete)";
             this.miRemove.Click += new System.EventHandler(this.miRemove_Click);
             // 
             // miEdit
             // 
             this.miEdit.Image = global::IPG.Properties.Resources.edit;
             this.miEdit.Name = "miEdit";
-            this.miEdit.Size = new System.Drawing.Size(117, 22);
-            this.miEdit.Text = "Edit";
+            this.miEdit.Size = new System.Drawing.Size(180, 22);
+            this.miEdit.Text = "Edit (Ctrl + E)";
             this.miEdit.Click += new System.EventHandler(this.miEdit_Click);
             // 
             // toolStripSeparator1
@@ -267,6 +267,7 @@ namespace IPG.Forms
             this.tbFunctionPrefix.Name = "tbFunctionPrefix";
             this.tbFunctionPrefix.Size = new System.Drawing.Size(153, 22);
             this.tbFunctionPrefix.TabIndex = 7;
+            this.tbFunctionPrefix.Text = "pad";
             this.tbFunctionPrefix.TextChanged += new System.EventHandler(this.tbFunctionPrefix_TextChanged);
             // 
             // label4
