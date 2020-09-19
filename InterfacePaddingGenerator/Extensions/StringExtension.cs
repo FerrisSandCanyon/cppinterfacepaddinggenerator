@@ -1,4 +1,7 @@
-﻿namespace IPG.Extensions
+﻿using System.IO;
+using System.Linq;
+
+namespace IPG.Extensions
 {
     public static class StringExtension
     {

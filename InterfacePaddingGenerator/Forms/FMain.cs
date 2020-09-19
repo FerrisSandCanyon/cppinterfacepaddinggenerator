@@ -1,7 +1,5 @@
 ﻿//#define DISABLE_UPDATE_CHECK
 
-// TODO: implement shortcut keys
-
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -163,7 +161,6 @@ namespace IPG.Forms
                 "Automatically generates function padding for C++ interface classes\n\n" +
                 "[Non destructive] - When checked IPG analyzes the file and only overwrites virtual functions leaving custom functions, includes, comments, inherits, etc... untouched.\n\n" +
                 "Icons made by iconixar, kiranshastry from www.flaticon.com\n\n" +
-                "This software is licensed under MIT and is fully a FOSS\n\n" +
                 "Would you like to open the project's Github page? github.com/ferrissandcanyon/cppinterfacepaddinggenerator"
             // ========================================================================
             , Program.DefaultTitle, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
@@ -172,6 +169,7 @@ namespace IPG.Forms
             }
         }
 
+        // TODO: implement update check
         private void lblVer_Click(object sender, EventArgs e)
         {
             #if !DISABLE_UPDATE_CHECK
@@ -338,9 +336,21 @@ namespace IPG.Forms
             new Forms.FPreview().ShowDialog();
         }
 
-        private void tbOutFile_TextChanged(object sender, EventArgs e)
+        private void tbOutFile_TextChanged(object _sender, EventArgs e)
         {
-            Program.CurrentInstance.OutputFile = ((TextBox)sender).Text;
+            TextBox sender = ((TextBox)_sender);
+
+            foreach (char filter in Utils.Values.InvalidFilePath)
+            {
+                if (sender.Text.Contains(filter))
+                {
+                    MessageBox.Show($"File path contains an invalid character!\nCharacter: {filter}", "Invalid file path", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    sender.Text = Program.CurrentInstance.OutputFile;
+                    return;
+                }
+            }
+
+            Program.CurrentInstance.OutputFile = sender.Text;
         }
     }
 }

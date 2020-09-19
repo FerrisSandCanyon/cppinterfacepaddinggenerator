@@ -13,8 +13,15 @@ namespace IPG.Forms
 
         private void FPreview_Load(object sender, EventArgs e)
         {
-            btnWrite.Enabled = !Program.CurrentInstance.OutputFile.IsNullOrWhitespace();
+            if (btnWrite.Enabled = !Program.CurrentInstance.OutputFile.IsNullOrWhitespace())
+                this.Text += " - " + Program.CurrentInstance.OutputFile;
+
             rtbPreview.Text = Program.CurrentInstance.GenerateStatic(); 
+        }
+
+        private void btnWrite_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

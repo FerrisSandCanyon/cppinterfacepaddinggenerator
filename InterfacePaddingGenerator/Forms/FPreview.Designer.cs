@@ -44,6 +44,7 @@
             this.btnWrite.TabIndex = 0;
             this.btnWrite.Text = "Write to File";
             this.btnWrite.UseVisualStyleBackColor = true;
+            this.btnWrite.Click += new System.EventHandler(this.btnWrite_Click);
             // 
             // rtbPreview
             // 

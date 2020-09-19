@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Class\InterfaceFunction.cs" />
     <Compile Include="Class\IPGInstance.cs" />
+    <Compile Include="Class\Utils.cs" />
     <Compile Include="Extensions\IPGInstanceExtension.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Forms\FPreview.cs">
