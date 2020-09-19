@@ -337,5 +337,10 @@ namespace IPG.Forms
         {
             new Forms.FPreview().ShowDialog();
         }
+
+        private void tbOutFile_TextChanged(object sender, EventArgs e)
+        {
+            Program.CurrentInstance.OutputFile = ((TextBox)sender).Text;
+        }
     }
 }

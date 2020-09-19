@@ -189,7 +189,7 @@ namespace IPG.Forms
             // 
             this.miAdd.Image = global::IPG.Properties.Resources.plus;
             this.miAdd.Name = "miAdd";
-            this.miAdd.Size = new System.Drawing.Size(180, 22);
+            this.miAdd.Size = new System.Drawing.Size(161, 22);
             this.miAdd.Text = "Add (Ctrl + A)";
             this.miAdd.Click += new System.EventHandler(this.miAdd_Click);
             // 
@@ -197,7 +197,7 @@ namespace IPG.Forms
             // 
             this.miRemove.Image = global::IPG.Properties.Resources.error;
             this.miRemove.Name = "miRemove";
-            this.miRemove.Size = new System.Drawing.Size(180, 22);
+            this.miRemove.Size = new System.Drawing.Size(161, 22);
             this.miRemove.Text = "Remove (Delete)";
             this.miRemove.Click += new System.EventHandler(this.miRemove_Click);
             // 
@@ -205,7 +205,7 @@ namespace IPG.Forms
             // 
             this.miEdit.Image = global::IPG.Properties.Resources.edit;
             this.miEdit.Name = "miEdit";
-            this.miEdit.Size = new System.Drawing.Size(180, 22);
+            this.miEdit.Size = new System.Drawing.Size(161, 22);
             this.miEdit.Text = "Edit (Ctrl + E)";
             this.miEdit.Click += new System.EventHandler(this.miEdit_Click);
             // 
@@ -342,9 +342,9 @@ namespace IPG.Forms
             this.tbOutFile.ForeColor = System.Drawing.Color.White;
             this.tbOutFile.Location = new System.Drawing.Point(81, 364);
             this.tbOutFile.Name = "tbOutFile";
-            this.tbOutFile.ReadOnly = true;
             this.tbOutFile.Size = new System.Drawing.Size(746, 22);
             this.tbOutFile.TabIndex = 4;
+            this.tbOutFile.TextChanged += new System.EventHandler(this.tbOutFile_TextChanged);
             // 
             // label3
             // 
