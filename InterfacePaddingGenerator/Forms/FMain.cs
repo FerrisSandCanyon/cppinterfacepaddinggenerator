@@ -35,11 +35,12 @@ namespace IPG.Forms
         /// <param name="instance">An instance of IPG</param>
         public void LoadIPGToUI(in Class.IPGInstance instance)
         {
-            tbInterfaceName.Text     = instance.InterfaceName;
-            tbFunctionCount.Text      = instance.FunctionCount.ToString();
-            tbFunctionPrefix.Text    = instance.PaddingFunctionPrefix;
-            cbNonDestructive.Checked = instance.NonDestructive;
-            tbOutFile.Text           = instance.OutputFile;
+            tbInterfaceName.Text       = instance.InterfaceName;
+            tbFunctionCount.Text       = instance.FunctionCount.ToString();
+            tbFunctionPrefix.Text      = instance.PaddingFunctionPrefix;
+            cbNonDestructive.Checked   = instance.NonDestructive;
+            tbOutFile.Text             = instance.OutputFile;
+            cbInstanceRelative.Checked = instance.InstanceRelative;
 
             lvFunctions.Items.Clear();
             foreach (Class.InterfaceFunction ifacefn in instance.DefinedFunctions)
@@ -71,6 +72,7 @@ namespace IPG.Forms
             Program.CurrentInstance.PaddingFunctionPrefix = tbFunctionPrefix.Text;
             Program.CurrentInstance.FunctionCount         = idx_function_count;
             Program.CurrentInstance.NonDestructive        = cbNonDestructive.Checked;
+            Program.CurrentInstance.InstanceRelative      = cbInstanceRelative.Checked;
 
             return true;
         }
@@ -91,6 +93,7 @@ namespace IPG.Forms
 
             #if !DEBUG
                 cbNonDestructive.Visible = false;
+                cbInstanceRelative.Visible = false;
             #endif
 
             lblVer.Text = "Version: " + Program.VersionString; // Set version
@@ -160,6 +163,7 @@ namespace IPG.Forms
             // ========================================================================
                 "Automatically generates function padding for C++ interface classes\n\n" +
                 "[Non destructive] - When checked IPG analyzes the file and only overwrites virtual functions leaving custom functions, includes, comments, inherits, etc... untouched.\n\n" +
+                "[Instance relative] - When enabled the output file uses the currently loaded IPG file's directory path as its working directory for the output file path" +
                 "Icons made by iconixar, kiranshastry from www.flaticon.com\n\n" +
                 "Would you like to open the project's Github page? github.com/ferrissandcanyon/cppinterfacepaddinggenerator"
             // ========================================================================
@@ -351,6 +355,11 @@ namespace IPG.Forms
             }
 
             Program.CurrentInstance.OutputFile = sender.Text;
+        }
+
+        private void cbInstanceRelative_CheckedChanged(object sender, EventArgs e)
+        {
+            Program.CurrentInstance.InstanceRelative = ((CheckBox)sender).Checked;
         }
     }
 }

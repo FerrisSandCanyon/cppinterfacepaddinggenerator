@@ -60,6 +60,7 @@ namespace IPG.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.tbOutFile = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.cbInstanceRelative = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -342,7 +343,7 @@ namespace IPG.Forms
             this.tbOutFile.ForeColor = System.Drawing.Color.White;
             this.tbOutFile.Location = new System.Drawing.Point(81, 364);
             this.tbOutFile.Name = "tbOutFile";
-            this.tbOutFile.Size = new System.Drawing.Size(746, 22);
+            this.tbOutFile.Size = new System.Drawing.Size(631, 22);
             this.tbOutFile.TabIndex = 4;
             this.tbOutFile.TextChanged += new System.EventHandler(this.tbOutFile_TextChanged);
             // 
@@ -356,12 +357,24 @@ namespace IPG.Forms
             this.label3.TabIndex = 3;
             this.label3.Text = "Output file:";
             // 
+            // cbInstanceRelative
+            // 
+            this.cbInstanceRelative.AutoSize = true;
+            this.cbInstanceRelative.Location = new System.Drawing.Point(718, 365);
+            this.cbInstanceRelative.Name = "cbInstanceRelative";
+            this.cbInstanceRelative.Size = new System.Drawing.Size(109, 17);
+            this.cbInstanceRelative.TabIndex = 5;
+            this.cbInstanceRelative.Text = "Instance relative";
+            this.cbInstanceRelative.UseVisualStyleBackColor = true;
+            this.cbInstanceRelative.CheckedChanged += new System.EventHandler(this.cbInstanceRelative_CheckedChanged);
+            // 
             // FMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.ClientSize = new System.Drawing.Size(839, 396);
+            this.Controls.Add(this.cbInstanceRelative);
             this.Controls.Add(this.tbOutFile);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.groupBox2);
@@ -415,6 +428,7 @@ namespace IPG.Forms
         private System.Windows.Forms.Label label4;
         private ListView lvFunctions;
         private ToolStripMenuItem miNew;
+        private CheckBox cbInstanceRelative;
     }
 }
 

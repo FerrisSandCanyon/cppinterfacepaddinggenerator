@@ -41,6 +41,11 @@ namespace IPG.Class
         public bool NonDestructive = true;
 
         /// <summary>
+        /// Output file relative to instance option
+        /// </summary>
+        public bool InstanceRelative = false;
+
+        /// <summary>
         /// List of defined interface functions
         /// </summary>
         public List<Class.InterfaceFunction> DefinedFunctions = new List<Class.InterfaceFunction> { };
