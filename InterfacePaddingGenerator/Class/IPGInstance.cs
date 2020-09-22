@@ -70,13 +70,13 @@ namespace IPG.Class
         }
 
         /// <summary>
-        /// Generates an interface class based off the current instance
+        /// Generates an interface class statically based off the current instance
         /// </summary>
-        /// <returns></returns>
+        /// <returns>[string] A statically generated interface class based of the current instance</returns>
         public string GenerateStatic()
         {
             string final = 
-                $"class {this.InterfaceName}\n" +
+                $"class {this.InterfaceName ?? "IClass"}\n" +
                 "{\n" +
                 "public:";
 
@@ -101,9 +101,46 @@ namespace IPG.Class
             return final;
         }
 
+        /// <summary>
+        /// Generates an interface class dynamically based off the current instance
+        /// </summary>
+        /// <returns>[string] A dynamically generated interface class based of the current instance</returns>
+        public string GenerateDynamic()
+        {
+            return null;
+        }
+
+        /// <summary>
+        /// Obtains the appropriate path for the output file
+        /// </summary>
+        /// <returns>String to the proper output file</returns>
         public string ProperOutFile()
         {
+            // TODO: verify out file path
+            if (OutputFile == null)
+                return null;
+
             return InstanceRelative ? $"{Path.GetDirectoryName(Program.CurrentFile)}/{OutputFile}" : OutputFile;
+        }
+
+        /// <summary>
+        /// Generate the interface file and write it
+        /// </summary>
+        /// <returns>[bool] Returns true if successful, otherwise false</returns>
+        public bool GenerateWrite()
+        {
+            string write = NonDestructive ? GenerateDynamic() : GenerateStatic();
+
+            if (write == null)
+                return false;
+
+            using (StreamWriter _sw = new StreamWriter(ProperOutFile()))
+            {
+                _sw.Write(write);
+                _sw.Close();
+            }
+
+            return true;
         }
 
     }
