@@ -14,7 +14,7 @@ namespace IPG.Forms
         private void FPreview_Load(object sender, EventArgs e)
         {
             if (btnWrite.Enabled = !Program.CurrentInstance.OutputFile.IsNullOrWhitespace())
-                this.Text += " - " + Program.CurrentInstance.OutputFile;
+                this.Text += " - " + Program.CurrentInstance.ProperOutFile();
 
             rtbPreview.Text = Program.CurrentInstance.GenerateStatic(); 
         }

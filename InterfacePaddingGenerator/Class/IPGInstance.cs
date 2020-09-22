@@ -101,6 +101,11 @@ namespace IPG.Class
             return final;
         }
 
+        public string ProperOutFile()
+        {
+            return InstanceRelative ? $"{Path.GetDirectoryName(Program.CurrentFile)}/{OutputFile}" : OutputFile;
+        }
+
     }
 }
 

@@ -344,9 +344,23 @@ namespace IPG.Forms
         {
             TextBox sender = ((TextBox)_sender);
 
-            foreach (char filter in Utils.Values.InvalidFilePath)
+            // File name filtering
+            string name = Path.GetFileName(sender.Text);
+            foreach (char filter in Path.GetInvalidFileNameChars())
             {
-                if (sender.Text.Contains(filter))
+                if (name.Contains(filter))
+                {
+                    MessageBox.Show($"File name contains an invalid character!\nCharacter: {filter}", "Invalid file name", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    sender.Text = Program.CurrentInstance.OutputFile;
+                    return;
+                }
+            }
+
+            // File path filtering
+            string path = Path.GetDirectoryName(sender.Text);
+            foreach (char filter in Path.GetInvalidPathChars())
+            {
+                if (path.Contains(filter))
                 {
                     MessageBox.Show($"File path contains an invalid character!\nCharacter: {filter}", "Invalid file path", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     sender.Text = Program.CurrentInstance.OutputFile;
