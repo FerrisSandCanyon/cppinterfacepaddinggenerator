@@ -51,6 +51,25 @@ namespace IPG.Class
         public List<Class.InterfaceFunction> DefinedFunctions = new List<Class.InterfaceFunction> { };
 
         /// <summary>
+        /// Verifies that the values for the current instance is ready to generate
+        /// </summary>
+        /// <returns>[bool] True if values are ok, false otherwise</returns>
+        public bool VerifyValues()
+        {
+            // TODO: Also verify for invalid keywords
+
+            if (InterfaceName.IsNullOrWhitespace()                   // Interface name check
+            ||  FunctionCount < 1                                    // Function count check
+            // TODO: verify path
+            || (InstanceRelative && OutputFile.IsNullOrWhitespace()) // If instance relative is enabled, output file should be provided
+            ) {
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
         /// Generates an interface class based off the current instance
         /// </summary>
         /// <returns></returns>
