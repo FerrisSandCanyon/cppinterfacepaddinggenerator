@@ -305,8 +305,8 @@ namespace IPG.Utils
         /// <summary>
         /// Wrapper function for LoadFromFile that automatically sets up the UI and associated values
         /// </summary>
-        /// <param name="filepath"></param>
-        /// <returns></returns>
+        /// <param name="filepath">Path to the IPG file to load</param>
+        /// <returns>[bool] Returns true if successful, otherwise false</returns>
         /// <remarks>
         /// Wrapper function exists so LoadFromFile can be independent and load IPG files without loading it as the current instance and to ease loading of files
         /// </remarks>
