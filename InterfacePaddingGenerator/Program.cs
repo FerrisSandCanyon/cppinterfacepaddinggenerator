@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace IPG
@@ -10,7 +11,7 @@ namespace IPG
         /// <summary>
         /// version in numeric
         /// </summary>
-        public static readonly int[] Version = { 0, 1, 0 };
+        public static readonly int[] Version = { 0, 2, 0 };
 
         /// <summary>
         /// Version in string
@@ -41,6 +42,16 @@ namespace IPG
         /// Current IPG Instance loaded
         /// </summary>
         public static Class.IPGInstance CurrentInstance = new Class.IPGInstance();
+
+        /// <summary>
+        /// App update instance
+        /// </summary>
+        public static Class.AppUpdate Update = null;
+
+        /// <summary>
+        /// Thread to execute the update check
+        /// </summary>
+        public static Thread UpdateThread = null;
 
         /// <summary>
         /// The main entry point for the application.

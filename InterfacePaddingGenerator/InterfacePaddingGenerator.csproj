@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\AppUpdate.cs" />
     <Compile Include="Class\InterfaceFunction.cs" />
     <Compile Include="Class\IPGInstance.cs" />
     <Compile Include="Class\Utils.cs" />

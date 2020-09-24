@@ -4,6 +4,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using IPG.Extensions;
 
@@ -89,6 +90,8 @@ namespace IPG.Forms
         {
             #if DISABLE_UPDATE_CHECK
                 lblVer.IsLink = false;
+            #else
+                Program.Update = new Class.AppUpdate();
             #endif
 
             #if !DEBUG
@@ -175,9 +178,36 @@ namespace IPG.Forms
         private void lblVer_Click(object sender, EventArgs e)
         {
             #if !DISABLE_UPDATE_CHECK
-            
+            {
+
+                if (Program.UpdateThread != null && Program.UpdateThread.IsAlive)
+                {
+                    MessageBox.Show("An update check is alread running!", "Update", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                Program.UpdateThread = new Thread(new ThreadStart(() =>
+                {
+                    if (!Program.Update.Get())
+                        return;
+
+                    if (Program.Update.IsNewer())
+                    {
+                        if (MessageBox.Show($"An update is available!\n\nVersion: {Program.Update.vMajor}.{Program.Update.vMinor}.{Program.Update.vPatch}\nDescription: {Program.Update.description}\n\nWould you like to open the download link? ({Program.Update.dlLink})", "Update", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                            Process.Start(Program.Update.dlLink);
+                    }
+                    else
+                    {
+                        MessageBox.Show("No updates available!", "Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                    Program.UpdateThread = null;
+                }));
+
+                Program.UpdateThread.Start();
+            }
             #else
-            MessageBox.Show("Update checks has been removed from this build.", Program.DefaultTitle);
+                MessageBox.Show("Update checks has been removed from this build.", Program.DefaultTitle);
             #endif
         }
 
