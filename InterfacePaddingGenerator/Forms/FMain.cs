@@ -67,7 +67,7 @@ namespace IPG.Forms
                 MessageBox.Show("Invalid values!", "IPG", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
+            
             Program.CurrentInstance.InterfaceName         = tbInterfaceName.Text;
             Program.CurrentInstance.PaddingFunctionPrefix = tbFunctionPrefix.Text;
             Program.CurrentInstance.FunctionCount         = idx_function_count;
@@ -92,8 +92,6 @@ namespace IPG.Forms
             #endif
 
             #if !DEBUG
-                cbNonDestructive.Visible = false;
-                cbInstanceRelative.Visible = false;
             #endif
 
             lblVer.Text = "Version: " + Program.VersionString; // Set version
@@ -162,7 +160,7 @@ namespace IPG.Forms
             if (MessageBox.Show(
             // ========================================================================
                 "Automatically generates function padding for C++ interface classes\n\n" +
-                "[Non destructive] - When checked IPG analyzes the file and only overwrites virtual functions leaving custom functions, includes, comments, inherits, etc... untouched.\n\n" +
+                "[Non destructive] - When checked IPG analyzes the file and only overwrites virtual functions leaving custom functions, includes, comments, inherits, etc... untouched. (Mostly)\n\n" +
                 "[Instance relative] - When enabled the output file uses the currently loaded IPG file's directory path as its working directory for the output file path" +
                 "Icons made by iconixar, kiranshastry from www.flaticon.com\n\n" +
                 "Would you like to open the project's Github page? github.com/ferrissandcanyon/cppinterfacepaddinggenerator"

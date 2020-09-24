@@ -5,6 +5,9 @@ using System.IO;
 using IPG.Extensions;
 using System.Windows.Forms;
 using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace IPG.Class
 {
@@ -46,6 +49,11 @@ namespace IPG.Class
         public bool InstanceRelative = false;
 
         /// <summary>
+        /// States if the preview window should automatically close after writing
+        /// </summary>
+        public bool CloseOnWrite = false;
+
+        /// <summary>
         /// List of defined interface functions
         /// </summary>
         public List<Class.InterfaceFunction> DefinedFunctions = new List<Class.InterfaceFunction> { };
@@ -53,7 +61,7 @@ namespace IPG.Class
         /// <summary>
         /// Verifies that the values for the current instance is ready to generate
         /// </summary>
-        /// <returns>[bool] True if values are ok, false otherwise</returns>
+        /// <returns>[bool] True if values are verified, otherwise false</returns>
         public bool VerifyValues()
         {
             // TODO: Also verify for invalid keywords
@@ -75,11 +83,13 @@ namespace IPG.Class
         /// <returns>[string] A statically generated interface class based of the current instance</returns>
         public string GenerateStatic()
         {
+            // Define the class
             string final = 
                 $"class {this.InterfaceName ?? "IClass"}\n" +
                 "{\n" +
                 "public:";
 
+            // Write the virtual functions
             for (int idx = 0; idx < this.FunctionCount; idx++)
             {
                 string fnstr = null;
@@ -96,6 +106,7 @@ namespace IPG.Class
                 final += $"\n\t{fnstr}";
             }
 
+            // Closing
             final += "\n}";
 
             return final;
@@ -107,7 +118,61 @@ namespace IPG.Class
         /// <returns>[string] A dynamically generated interface class based of the current instance</returns>
         public string GenerateDynamic()
         {
-            return null;
+            string path = ProperOutFile();
+            // Check if the file already exists, if not generate a static one
+            if (!File.Exists(path))
+                return GenerateStatic();
+
+            string final = "";
+
+            // Read the file
+            using (StreamReader _sr = new StreamReader(path, Encoding.UTF8))
+            {
+                final = _sr.ReadToEnd();
+                _sr.Close();
+            }
+
+            // Find the class decleration with a proper interface body
+            Match interface_head = Regex.Match(final, @"class\s\w+[\w\n\s:]+{");
+
+            // If there's none, generate a static one
+            if (!interface_head.Success)
+                return GenerateStatic();
+
+            Match interface_declare = Regex.Match(interface_head.Value, @"class\s\w+[\w\n\s]"); // Find the interface class declaration
+            int   interface_len     = interface_declare.Length + (interface_declare.Value.EndsWith(" ") ?  - 1 : 0); // Preserve spacing
+            final = final.Remove(interface_head.Index, interface_len).Insert(interface_head.Index, $"class {this.InterfaceName ?? "IClass"}"); // Rewrite the class declaration
+
+            // Remove all the virtual functions
+            Match vfuncs = Regex.Match(final, @"virtual[\s\w()*,=;]+;[^{]"); // Select all virtual functions
+            final = final.Remove(vfuncs.Index, vfuncs.Length); // Remove them
+            
+            int last_idx = vfuncs.Index;
+
+            // Write the virtual functions
+            for (int idx = 0; idx < this.FunctionCount; idx++)
+            {
+                string fnstr = null;
+                Class.InterfaceFunction ifn = Program.CurrentInstance.DefinedFunctions.FirstOrDefault(x => x.Index == idx);
+
+                fnstr = ifn == null ? $"virtual void {this.PaddingFunctionPrefix}_{idx}(void)" : ifn.FunctionSignature;
+
+                if (!fnstr.StartsWith("virtual"))
+                    fnstr = fnstr.Insert(0, "virtual ");
+
+                // TODO: analyze the spacing and preserve it instead of hardcoding \t
+                if (!fnstr.StartsWith("\n\t") && idx != 0)
+                    fnstr = fnstr.Insert(0, "\n\t");
+
+                // TODO: replace this with regex
+                if (!fnstr.Replace(" ", "").EndsWith("=0;"))
+                    fnstr += " = 0;";
+
+                final = final.Insert(last_idx, fnstr);
+                last_idx += fnstr.Length; // Set the next proper index on where to append the next virtual function
+            }
+
+            return final;
         }
 
         /// <summary>
@@ -120,24 +185,34 @@ namespace IPG.Class
             if (OutputFile == null)
                 return null;
 
-            return InstanceRelative ? $"{Path.GetDirectoryName(Program.CurrentFile)}/{OutputFile}" : OutputFile;
+            return InstanceRelative ? Path.Combine(Path.GetDirectoryName(Program.CurrentFile), OutputFile) : OutputFile;
         }
-
+        
         /// <summary>
         /// Generate the interface file and write it
         /// </summary>
+        /// <param name="_write">[optional] Buffer to write - If null/un-provided a proper call to the interface generator is made</param>
         /// <returns>[bool] Returns true if successful, otherwise false</returns>
-        public bool GenerateWrite()
+        public bool GenerateWrite(string _write = null)
         {
-            string write = NonDestructive ? GenerateDynamic() : GenerateStatic();
+            string write = _write ?? (NonDestructive ? GenerateDynamic() : GenerateStatic());
+            string path  = ProperOutFile();
 
-            if (write == null)
+            if (write == null || path == null)
                 return false;
 
-            using (StreamWriter _sw = new StreamWriter(ProperOutFile()))
+            try
             {
-                _sw.Write(write);
-                _sw.Close();
+                using (StreamWriter _sw = new StreamWriter(path))
+                {
+                    _sw.Write(write);
+                    _sw.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "File write exception!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
 
             return true;

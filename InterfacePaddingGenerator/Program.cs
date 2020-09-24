@@ -10,7 +10,7 @@ namespace IPG
         /// <summary>
         /// version in numeric
         /// </summary>
-        public static readonly int[] Version = { 0, 0, 1 };
+        public static readonly int[] Version = { 0, 1, 0 };
 
         /// <summary>
         /// Version in string

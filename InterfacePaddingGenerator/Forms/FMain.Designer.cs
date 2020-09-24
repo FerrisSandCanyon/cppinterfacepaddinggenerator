@@ -359,8 +359,9 @@ namespace IPG.Forms
             // 
             // cbInstanceRelative
             // 
+            this.cbInstanceRelative.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cbInstanceRelative.AutoSize = true;
-            this.cbInstanceRelative.Location = new System.Drawing.Point(718, 365);
+            this.cbInstanceRelative.Location = new System.Drawing.Point(718, 368);
             this.cbInstanceRelative.Name = "cbInstanceRelative";
             this.cbInstanceRelative.Size = new System.Drawing.Size(109, 17);
             this.cbInstanceRelative.TabIndex = 5;

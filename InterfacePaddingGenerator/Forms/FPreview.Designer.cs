@@ -31,16 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FPreview));
             this.btnWrite = new System.Windows.Forms.Button();
             this.rtbPreview = new System.Windows.Forms.RichTextBox();
+            this.cbCloseOnWrite = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnWrite
             // 
-            this.btnWrite.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnWrite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnWrite.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnWrite.Location = new System.Drawing.Point(12, 423);
+            this.btnWrite.Location = new System.Drawing.Point(688, 423);
             this.btnWrite.Name = "btnWrite";
-            this.btnWrite.Size = new System.Drawing.Size(776, 23);
+            this.btnWrite.Size = new System.Drawing.Size(100, 23);
             this.btnWrite.TabIndex = 0;
             this.btnWrite.Text = "Write to File";
             this.btnWrite.UseVisualStyleBackColor = true;
@@ -57,12 +57,25 @@
             this.rtbPreview.TabIndex = 1;
             this.rtbPreview.Text = "";
             // 
+            // cbCloseOnWrite
+            // 
+            this.cbCloseOnWrite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbCloseOnWrite.AutoSize = true;
+            this.cbCloseOnWrite.Location = new System.Drawing.Point(582, 427);
+            this.cbCloseOnWrite.Name = "cbCloseOnWrite";
+            this.cbCloseOnWrite.Size = new System.Drawing.Size(100, 17);
+            this.cbCloseOnWrite.TabIndex = 2;
+            this.cbCloseOnWrite.Text = "Close on write";
+            this.cbCloseOnWrite.UseVisualStyleBackColor = true;
+            this.cbCloseOnWrite.CheckedChanged += new System.EventHandler(this.cbCloseOnWrite_CheckedChanged);
+            // 
             // FPreview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cbCloseOnWrite);
             this.Controls.Add(this.rtbPreview);
             this.Controls.Add(this.btnWrite);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -73,6 +86,7 @@
             this.Text = "Preview";
             this.Load += new System.EventHandler(this.FPreview_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -80,5 +94,6 @@
 
         private System.Windows.Forms.Button btnWrite;
         private System.Windows.Forms.RichTextBox rtbPreview;
+        private System.Windows.Forms.CheckBox cbCloseOnWrite;
     }
 }
