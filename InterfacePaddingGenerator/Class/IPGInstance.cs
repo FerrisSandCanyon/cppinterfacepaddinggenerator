@@ -83,17 +83,29 @@ namespace IPG.Class
         /// <returns>[string] A statically generated interface class based of the current instance</returns>
         public string GenerateStatic()
         {
+            bool IsLastEntryPublic = true;
+
             // Define the class
             string final = 
                 $"class {this.InterfaceName ?? "IClass"}\n" +
-                "{\n" +
-                "public:";
+                "{\n";
 
             // Write the virtual functions
             for (int idx = 0; idx < this.FunctionCount; idx++)
             {
                 string fnstr = null;
                 Class.InterfaceFunction ifn = Program.CurrentInstance.DefinedFunctions.FirstOrDefault(x => x.Index == idx);
+
+                if (ifn != null && !IsLastEntryPublic)
+                {
+                    IsLastEntryPublic = true;
+                    final += "\npublic:\n";
+                }
+                else if (ifn == null && IsLastEntryPublic)
+                {
+                    IsLastEntryPublic = false;
+                    final += "\nprivate:\n";
+                }
 
                 fnstr = ifn == null ? $"virtual void {this.PaddingFunctionPrefix}_{idx}(void)" : ifn.FunctionSignature;
 
@@ -107,7 +119,7 @@ namespace IPG.Class
             }
 
             // Closing
-            final += "\n}";
+            final += "\n};";
 
             return final;
         }
